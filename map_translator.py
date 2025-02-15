@@ -1,5 +1,6 @@
 from pathlib import Path
 from sprites.dirt import *
+from sprites.trench_walls import *
 
 def ground_map_translator(game, map):
 
@@ -20,4 +21,9 @@ def ground_map_translator(game, map):
                     Dirt2(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
                 else:
                     Dirt2(game, x, (y+(16/TILESIZE))/2)
+            if col == 'W':
+                if y % 2 != 0:
+                    TrenchWalls1(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                else:
+                    TrenchWalls1(game, x, (y+(16/TILESIZE))/2)
 
