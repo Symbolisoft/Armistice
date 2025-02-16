@@ -4,7 +4,6 @@ import pickle
 import tkinter
 from tkinter import filedialog
 
-from sprites.reference_sprite import *
 from sprites.spritesheet import *
 from sprites.dirt import *
 from configs.screen_config import *
@@ -62,8 +61,10 @@ class Game:
         self.firing_steps = pygame.sprite.LayeredUpdates()
         self.ladders = pygame.sprite.LayeredUpdates()
         self.barbed_wire = pygame.sprite.LayeredUpdates()
+        self.bottom_sprites = pygame.sprite.LayeredUpdates()
+        self.top_sprites = pygame.sprite.LayeredUpdates()
 
-        self.reference_sprite_sprite = ReferenceSprite(self)
+        
 
         self.ground_map_layer_1 = ground_map_translator(self, 'data/map_layer_1.amf')
         self.ground_map_layer_2 = ground_map_translator(self, 'data/map_layer_2.amf')
@@ -119,27 +120,21 @@ class Game:
         self.camera_speed = self.camera_speed*self.zoom_level
         if self.camera_speed >= 6:
             self.camera_speed = 6
+        if self.camera_speed <= 1:
+            self.camera_speed = 1
 
-        for sprite in self.reference_sprite:
-            self.ref_x_pix = sprite.rect.x
-            self.ref_y_pix = sprite.rect.y
         
-        if self.ref_x_pix != 0:
-            self.rel_x = self.ref_x_pix/TILESIZE
-        else:
-            self.rel_x = self.ref_x_pix
-
-        if self.ref_y_pix != 0:
-            self.rel_y = self.ref_y_pix/TILESIZE
-        else:
-            self.rel_y = self.ref_y_pix
 
         
 
     def draw(self):
         self.screen.fill(BLACK)
         self.screen_buffer.fill(BLACK)
-        self.all_sprites.draw(self.screen_buffer)
+        self.bottom_sprites.draw(self.screen_buffer)
+        for sprite in sorted(self.all_sprites, key= lambda sprite: sprite.rect.centery):
+            self.screen_buffer.blit(sprite.image, sprite.rect)
+        for sprite in sorted(self.top_sprites, key= lambda sprite: sprite.rect.centery):
+            self.screen_buffer.blit(sprite.image, sprite.rect)
         
         
         #   LOGIC FOR CAMERA ZOOM HERE - SELF.SCREEN_BUFFER.TRANSFORM OR SOMETHING

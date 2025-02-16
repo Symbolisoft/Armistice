@@ -10,7 +10,7 @@ class Dirt1(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = GROUND_LAYER_1
-        self.groups = self.game.all_sprites, self.game.dirt_group
+        self.groups = self.game.bottom_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = x*TILESIZE

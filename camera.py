@@ -10,7 +10,13 @@ class Camera:
 
     def update(self):
         self.movement()
+        for sprite in self.game.bottom_sprites:
+            sprite.rect.y += self.y_change
+            sprite.rect.x += self.x_change
         for sprite in self.game.all_sprites:
+            sprite.rect.y += self.y_change
+            sprite.rect.x += self.x_change
+        for sprite in self.game.top_sprites:
             sprite.rect.y += self.y_change
             sprite.rect.x += self.x_change
         self.x_change = 0

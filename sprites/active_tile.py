@@ -8,8 +8,8 @@ class ActiveTile(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.active_tile_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x - self.game.rel_x
-        self.y = y - self.game.rel_y
+        self.x = x
+        self.y = y
         self.width = 32
         self.height = 16
 

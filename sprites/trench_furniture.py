@@ -53,7 +53,7 @@ class SandBagsRight(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = FURNITURE_LAYER_2
-        self.groups = self.game.all_sprites, self.game.sandbags
+        self.groups = self.game.top_sprites, self.game.sandbags
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = x*TILESIZE
@@ -80,7 +80,7 @@ class SandBagsLeft(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = FURNITURE_LAYER_2
-        self.groups = self.game.all_sprites, self.game.sandbags
+        self.groups = self.game.top_sprites, self.game.sandbags
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = x*TILESIZE
@@ -371,7 +371,7 @@ class BarbedWireRight(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = FURNITURE_LAYER_2
-        self.groups = self.game.all_sprites, self.game.barbed_wire
+        self.groups = self.game.top_sprites, self.game.barbed_wire
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = x*TILESIZE
@@ -393,7 +393,7 @@ class BarbedWireLeft(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = FURNITURE_LAYER_2
-        self.groups = self.game.all_sprites, self.game.barbed_wire
+        self.groups = self.game.top_sprites, self.game.barbed_wire
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = x*TILESIZE
