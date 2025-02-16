@@ -8,8 +8,8 @@ class ActiveTile(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.active_tile_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x
-        self.y = y
+        self.x = x - self.game.rel_x
+        self.y = y - self.game.rel_y
         self.width = 32
         self.height = 16
 
@@ -21,6 +21,7 @@ class ActiveTile(pygame.sprite.Sprite):
         self.timer = pygame.time.get_ticks()
 
     def update(self):
+        
         now = pygame.time.get_ticks()
         if now - self.timer >= 200:
             self.kill()

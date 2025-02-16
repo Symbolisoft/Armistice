@@ -4,6 +4,7 @@ import pickle
 import tkinter
 from tkinter import filedialog
 
+from sprites.reference_sprite import *
 from sprites.spritesheet import *
 from sprites.dirt import *
 from configs.screen_config import *
@@ -53,10 +54,16 @@ class Game:
         self.playing = True
 
         self.all_sprites = pygame.sprite.LayeredUpdates()
+        self.reference_sprite = pygame.sprite.LayeredUpdates()
         self.dirt_group = pygame.sprite.LayeredUpdates()
         self.active_tile_group = pygame.sprite.LayeredUpdates()
         self.bunks = pygame.sprite.LayeredUpdates()
         self.sandbags = pygame.sprite.LayeredUpdates()
+        self.firing_steps = pygame.sprite.LayeredUpdates()
+        self.ladders = pygame.sprite.LayeredUpdates()
+        self.barbed_wire = pygame.sprite.LayeredUpdates()
+
+        self.reference_sprite_sprite = ReferenceSprite(self)
 
         self.ground_map_layer_1 = ground_map_translator(self, 'data/map_layer_1.amf')
         self.ground_map_layer_2 = ground_map_translator(self, 'data/map_layer_2.amf')
@@ -71,15 +78,15 @@ class Game:
 
             if event.type == pygame.MOUSEWHEEL:
                 if event.y > 0:
-                    if self.zoom_level < 2:
-                        self.zoom_level += 0.02
+                    if self.zoom_level < 1.5:
+                        self.zoom_level += 0.05
                     else: 
-                        self.zoom_level = 2
+                        self.zoom_level = 1.5
                 if event.y < 0:
-                    if self.zoom_level > 0.5:
-                        self.zoom_level -= 0.02
+                    if self.zoom_level > 0.7:
+                        self.zoom_level -= 0.05
                     else:
-                        self.zoom_level = 0.5
+                        self.zoom_level = 0.7
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_b]:
@@ -88,15 +95,15 @@ class Game:
             self.digging = False
 
         if keys[pygame.K_UP]:
-            if self.zoom_level < 2:
-                self.zoom_level += 0.02
+            if self.zoom_level < 1.5:
+                self.zoom_level += 0.05
             else: 
-                self.zoom_level = 2
+                self.zoom_level = 1.5
         if keys[pygame.K_DOWN]:
-            if self.zoom_level > 0.5:
-                self.zoom_level -= 0.02
+            if self.zoom_level > 0.7:
+                self.zoom_level -= 0.05
             else:
-                self.zoom_level = 0.5
+                self.zoom_level = 0.7
 
     def update(self):
         
@@ -104,14 +111,30 @@ class Game:
         self.camera.update()
 
 
-        if self.zoom_level > 2:
-            self.zoom_level = 2
-        elif self.zoom_level < 0.5:
-            self.zoom_level = 0.5
+        if self.zoom_level > 1.5:
+            self.zoom_level = 1.5
+        elif self.zoom_level < 0.7:
+            self.zoom_level = 0.7
 
         self.camera_speed = self.camera_speed*self.zoom_level
         if self.camera_speed >= 6:
             self.camera_speed = 6
+
+        for sprite in self.reference_sprite:
+            self.ref_x_pix = sprite.rect.x
+            self.ref_y_pix = sprite.rect.y
+        
+        if self.ref_x_pix != 0:
+            self.rel_x = self.ref_x_pix/TILESIZE
+        else:
+            self.rel_x = self.ref_x_pix
+
+        if self.ref_y_pix != 0:
+            self.rel_y = self.ref_y_pix/TILESIZE
+        else:
+            self.rel_y = self.ref_y_pix
+
+        
 
     def draw(self):
         self.screen.fill(BLACK)

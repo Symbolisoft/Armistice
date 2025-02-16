@@ -127,4 +127,41 @@ def furniture_map_translator(game, map):
                     ArtyShellsLeft(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
                 else:
                     ArtyShellsLeft(game, x, (y+(16/TILESIZE))/2)
+            if col == 'F':
+                if y % 2 != 0:
+                    FiringStepRight(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                else:
+                    FiringStepRight(game, x, (y+(16/TILESIZE))/2)
+            if col == 'f':
+                if y % 2 != 0:
+                    FiringStepLeft(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                else:
+                    FiringStepLeft(game, x, (y+(16/TILESIZE))/2)
+            if col == 'L':
+                if y % 2 != 0:
+                    FiringStepRight(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                    LadderRight(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                else:
+                    FiringStepRight(game, x, (y+(16/TILESIZE))/2)
+                    LadderRight(game, x, (y+(16/TILESIZE))/2)
+            if col == 'l':
+                if y % 2 != 0:
+                    FiringStepLeft(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                    LadderLeft(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                else:
+                    FiringStepLeft(game, x, (y+(16/TILESIZE))/2)
+                    LadderLeft(game, x, (y+(16/TILESIZE))/2)
+            if col == 'Z':
+                if y % 2 != 0:
+                    BarbedWireRight(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                else:
+                    BarbedWireRight(game, x, (y+(16/TILESIZE))/2)
+            if col == 'z':
+                if y % 2 != 0:
+                    BarbedWireLeft(game, x+(16/TILESIZE), (y+(16/TILESIZE))/2)
+                else:
+                    BarbedWireLeft(game, x, (y+(16/TILESIZE))/2)
+            
+
+
 
