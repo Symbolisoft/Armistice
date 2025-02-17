@@ -162,6 +162,3 @@ def furniture_map_translator(game, map):
                 else:
                     BarbedWireLeft(game, x, (y+(16/TILESIZE))/2)
             
-
-
-

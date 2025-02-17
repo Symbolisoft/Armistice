@@ -22,7 +22,6 @@ class Camera:
         self.x_change = 0
         self.y_change = 0
 
-
     def movement(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:

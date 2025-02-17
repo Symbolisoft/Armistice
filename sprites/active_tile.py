@@ -5,7 +5,7 @@ class ActiveTile(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = UI_LAYER
-        self.groups = self.game.all_sprites, self.game.active_tile_group
+        self.groups = self.game.top_sprites, self.game.active_tile_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = x

@@ -12,8 +12,8 @@ class BunkRight(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.bunks
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -34,8 +34,8 @@ class BunkLeft(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.bunks
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -56,8 +56,8 @@ class SandBagsRight(pygame.sprite.Sprite):
         self.groups = self.game.top_sprites, self.game.sandbags
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -83,8 +83,8 @@ class SandBagsLeft(pygame.sprite.Sprite):
         self.groups = self.game.top_sprites, self.game.sandbags
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -110,8 +110,8 @@ class CabinetRight(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -132,8 +132,8 @@ class CabinetLeft(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -154,8 +154,8 @@ class GunRackRight(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -176,8 +176,8 @@ class GunRackLeft(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -198,8 +198,8 @@ class GreenCratesRight(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -220,8 +220,8 @@ class GreenCratesLeft(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -242,8 +242,8 @@ class ArtyShellsRight(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -264,8 +264,8 @@ class ArtyShellsLeft(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -286,8 +286,8 @@ class FiringStepRight(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.firing_steps
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -308,8 +308,8 @@ class FiringStepLeft(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.firing_steps
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -330,8 +330,8 @@ class LadderRight(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.ladders
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -352,8 +352,8 @@ class LadderLeft(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.ladders
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -374,8 +374,8 @@ class BarbedWireRight(pygame.sprite.Sprite):
         self.groups = self.game.top_sprites, self.game.barbed_wire
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -396,8 +396,8 @@ class BarbedWireLeft(pygame.sprite.Sprite):
         self.groups = self.game.top_sprites, self.game.barbed_wire
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 

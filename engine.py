@@ -46,8 +46,11 @@ class Game:
 
         self.digging = False
 
-        self.camera_speed = 3
-        self.zoom_level = 1
+        self.camera_speed = 4
+        self.zoom_level = 1.3
+        self.delta_time = 1
+
+        
 
     def new_game(self):
         self.playing = True
@@ -66,9 +69,9 @@ class Game:
 
         
 
-        self.ground_map_layer_1 = ground_map_translator(self, 'data/map_layer_1.amf')
-        self.ground_map_layer_2 = ground_map_translator(self, 'data/map_layer_2.amf')
-        self.funiture_map = furniture_map_translator(self, 'data/furniture_map.amf')
+        self.ground_map_layer_1 = ground_map_translator(self, 'data/maps/map_layer_1.amf')
+        self.ground_map_layer_2 = ground_map_translator(self, 'data/maps/map_layer_2.amf')
+        self.funiture_map = furniture_map_translator(self, 'data/maps/furniture_map.amf')
 
     def events(self):
         for event in pygame.event.get():
@@ -79,15 +82,15 @@ class Game:
 
             if event.type == pygame.MOUSEWHEEL:
                 if event.y > 0:
-                    if self.zoom_level < 1.5:
+                    if self.zoom_level < 1.8:
                         self.zoom_level += 0.05
                     else: 
-                        self.zoom_level = 1.5
+                        self.zoom_level = 1.8
                 if event.y < 0:
-                    if self.zoom_level > 0.7:
+                    if self.zoom_level > 0.9:
                         self.zoom_level -= 0.05
                     else:
-                        self.zoom_level = 0.7
+                        self.zoom_level = 0.9
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_b]:
@@ -96,54 +99,56 @@ class Game:
             self.digging = False
 
         if keys[pygame.K_UP]:
-            if self.zoom_level < 1.5:
+            if self.zoom_level < 1.8:
                 self.zoom_level += 0.05
             else: 
-                self.zoom_level = 1.5
+                self.zoom_level = 1.8
         if keys[pygame.K_DOWN]:
-            if self.zoom_level > 0.7:
+            if self.zoom_level > 0.9:
                 self.zoom_level -= 0.05
             else:
-                self.zoom_level = 0.7
+                self.zoom_level = 0.9
 
     def update(self):
         
+        self.bottom_sprites.update()
         self.all_sprites.update()
+        self.top_sprites.update()
         self.camera.update()
 
 
-        if self.zoom_level > 1.5:
-            self.zoom_level = 1.5
-        elif self.zoom_level < 0.7:
-            self.zoom_level = 0.7
+        if self.zoom_level > 1.8:
+            self.zoom_level = 1.8
+        elif self.zoom_level < 0.9:
+            self.zoom_level = 0.9
 
-        self.camera_speed = self.camera_speed*self.zoom_level
-        if self.camera_speed >= 6:
-            self.camera_speed = 6
-        if self.camera_speed <= 1:
-            self.camera_speed = 1
-
-        
-
-        
+        self.camera_speed = self.camera_speed/(self.zoom_level)
+        if self.camera_speed >= 8:
+            self.camera_speed = 8
+        if self.camera_speed <= 4:
+            self.camera_speed = 4
 
     def draw(self):
         self.screen.fill(BLACK)
         self.screen_buffer.fill(BLACK)
-        self.bottom_sprites.draw(self.screen_buffer)
+        
+        for sprite in self.bottom_sprites:
+            if self.screen.get_rect().colliderect(sprite.rect):
+                self.screen_buffer.blit(sprite.image, sprite.rect)
         for sprite in sorted(self.all_sprites, key= lambda sprite: sprite.rect.centery):
-            self.screen_buffer.blit(sprite.image, sprite.rect)
+            if self.screen.get_rect().colliderect(sprite.rect):
+                self.screen_buffer.blit(sprite.image, sprite.rect)
         for sprite in sorted(self.top_sprites, key= lambda sprite: sprite.rect.centery):
-            self.screen_buffer.blit(sprite.image, sprite.rect)
+            if self.screen.get_rect().colliderect(sprite.rect):
+                self.screen_buffer.blit(sprite.image, sprite.rect)
         
         
         #   LOGIC FOR CAMERA ZOOM HERE - SELF.SCREEN_BUFFER.TRANSFORM OR SOMETHING
         
         zoomed = pygame.transform.scale_by(self.screen_buffer, self.zoom_level)
-        zoomed_rect = zoomed.get_rect(center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2))
-        
+               
 
-        self.screen.blit(zoomed, zoomed_rect)
+        self.screen.blit(zoomed, self.screen.get_rect())
         self.clock.tick(FPS)
         pygame.display.update()
 

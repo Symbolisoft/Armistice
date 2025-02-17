@@ -15,8 +15,8 @@ class TrenchWalls1(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -59,8 +59,8 @@ class TrenchLeftTaperTop(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -100,8 +100,8 @@ class TrenchLeftTaperBottom(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -141,8 +141,8 @@ class TrenchLeftRecess(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -182,8 +182,8 @@ class TrenchRightTaperTop(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -223,8 +223,8 @@ class TrenchRightTaperBottom(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 
@@ -264,8 +264,8 @@ class TrenchRightRecess(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE
         self.height = TILESIZE
 

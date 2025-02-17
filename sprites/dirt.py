@@ -13,8 +13,8 @@ class Dirt1(pygame.sprite.Sprite):
         self.groups = self.game.bottom_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE/4
         self.height = TILESIZE/4
 
@@ -41,7 +41,6 @@ class Dirt1(pygame.sprite.Sprite):
         pass
 
 
-
 class Dirt2(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
@@ -49,8 +48,8 @@ class Dirt2(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites, self.game.dirt_group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.x = x*TILESIZE
-        self.y = y*(TILESIZE/2)
+        self.x = (x-16)*TILESIZE
+        self.y = (y-24)*(TILESIZE/2)
         self.width = TILESIZE/4
         self.height = TILESIZE/4
 
