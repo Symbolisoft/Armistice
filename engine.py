@@ -69,7 +69,7 @@ class Game:
 
         
 
-        self.ground_map_layer_1 = ground_map_translator(self, 'data/maps/map_layer_1.amf')
+        #   self.ground_map_layer_1 = ground_map_translator(self, 'data/maps/map_layer_1.amf')
         self.ground_map_layer_2 = ground_map_translator(self, 'data/maps/map_layer_2.amf')
         self.funiture_map = furniture_map_translator(self, 'data/maps/furniture_map.amf')
 
@@ -134,21 +134,54 @@ class Game:
         
         for sprite in self.bottom_sprites:
             if self.screen.get_rect().colliderect(sprite.rect):
-                self.screen_buffer.blit(sprite.image, sprite.rect)
+                #   self.screen_buffer.blit(sprite.image, sprite.rect)
+                scaled_rect = sprite.rect.copy()
+                scaled_rect.width = int(sprite.rect.width*self.zoom_level)
+                scaled_rect.height = int(sprite.rect.height*self.zoom_level)
+                scaled_rect.x = int(sprite.rect.x*self.zoom_level)
+                scaled_rect.y = int(sprite.rect.y*self.zoom_level)
+                scaled_sprite = pygame.transform.scale_by(sprite.image, self.zoom_level)
+                self.screen.blit(scaled_sprite, scaled_rect)
+
+                
+
         for sprite in sorted(self.all_sprites, key= lambda sprite: sprite.rect.centery):
             if self.screen.get_rect().colliderect(sprite.rect):
-                self.screen_buffer.blit(sprite.image, sprite.rect)
+                #   self.screen_buffer.blit(sprite.image, sprite.rect)
+                scaled_rect = sprite.rect.copy()
+                scaled_rect.width = int(sprite.rect.width*self.zoom_level)
+                scaled_rect.height = int(sprite.rect.height*self.zoom_level)
+                scaled_rect.x = int(sprite.rect.x*self.zoom_level)
+                scaled_rect.y = int(sprite.rect.y*self.zoom_level)
+                scaled_sprite = pygame.transform.scale_by(sprite.image, self.zoom_level)
+                self.screen.blit(scaled_sprite, scaled_rect)
+
+                if sprite == Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
+                    mouse_pos = pygame.mouse.get_pos()
+                    hits = scaled_rect.collidepoint(mouse_pos)
+                    if hits:
+                        if self.digging:
+                            ActiveTile(self, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
+
+
         for sprite in sorted(self.top_sprites, key= lambda sprite: sprite.rect.centery):
             if self.screen.get_rect().colliderect(sprite.rect):
-                self.screen_buffer.blit(sprite.image, sprite.rect)
+                #   self.screen_buffer.blit(sprite.image, sprite.rect)
+                scaled_rect = sprite.rect.copy()
+                scaled_rect.width = int(sprite.rect.width*self.zoom_level)
+                scaled_rect.height = int(sprite.rect.height*self.zoom_level)
+                scaled_rect.x = int(sprite.rect.x*self.zoom_level)
+                scaled_rect.y = int(sprite.rect.y*self.zoom_level)
+                scaled_sprite = pygame.transform.scale_by(sprite.image, self.zoom_level)
+                self.screen.blit(scaled_sprite, scaled_rect)
         
         
         #   LOGIC FOR CAMERA ZOOM HERE - SELF.SCREEN_BUFFER.TRANSFORM OR SOMETHING
         
-        zoomed = pygame.transform.scale_by(self.screen_buffer, self.zoom_level)
+        #   zoomed = pygame.transform.scale_by(self.screen_buffer, self.zoom_level)
                
 
-        self.screen.blit(zoomed, self.screen.get_rect())
+        #   self.screen.blit(self.screen_buffer, self.screen.get_rect())
         self.clock.tick(FPS)
         pygame.display.update()
 

@@ -49,7 +49,11 @@ class Dirt2(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = (x-16)*TILESIZE
+        self.init_x = self.x
+        self.x_dif = 0
         self.y = (y-24)*(TILESIZE/2)
+        self.init_y = self.y
+        self.y_dif = 0
         self.width = TILESIZE/4
         self.height = TILESIZE/4
 
@@ -77,8 +81,10 @@ class Dirt2(pygame.sprite.Sprite):
         mouse_pos = pygame.mouse.get_pos()
         click_1 = pygame.mouse.get_pressed()
         click_2 = pygame.mouse.get_pressed()
+        self.x_dif = self.x - self.init_x
+        self.y_dif = self.y - self.init_y
 
-        self.collide_mouse(mouse_pos)
+        
 
     def collide_mouse(self, pos):
         hits = self.rect.collidepoint(pos)
@@ -86,5 +92,5 @@ class Dirt2(pygame.sprite.Sprite):
             if self.game.digging:
                 now = pygame.time.get_ticks()
                 if now - self.active_timer >= 200:
-                    ActiveTile(self.game, self.x, self.y)
+                    ActiveTile(self.game, self.x-self.x_dif, self.y-self.y_dif)
                     self.active_timer = now
