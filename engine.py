@@ -46,11 +46,15 @@ class Game:
 
         self.digging = False
 
-        self.camera_speed = 4
+        self.camera_speed = 16
         self.zoom_level = 1.3
         self.delta_time = 1
 
-        
+        self.drawing = False
+
+        self.start_pos = 0
+        self.end_pos = 0
+        self.selection_rect = 0
 
     def new_game(self):
         self.playing = True
@@ -69,8 +73,8 @@ class Game:
 
         
 
-        #   self.ground_map_layer_1 = ground_map_translator(self, 'data/maps/map_layer_1.amf')
-        self.ground_map_layer_2 = ground_map_translator(self, 'data/maps/map_layer_2.amf')
+        
+        self.ground_map_layer_2 = ground_map_translator(self, 'data/maps/ground_map.amf')
         self.funiture_map = furniture_map_translator(self, 'data/maps/furniture_map.amf')
 
     def events(self):
@@ -91,6 +95,18 @@ class Game:
                         self.zoom_level -= 0.05
                     else:
                         self.zoom_level = 0.9
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self.start_pos = event.pos
+                self.drawing = True
+        
+            if event.type == pygame.MOUSEMOTION and self.drawing:
+                self.end_pos = event.pos
+            
+            if event.type == pygame.MOUSEBUTTONUP:
+                self.end_pos = 0
+                self.start_pos = 0
+                self.drawing = False
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_b]:
@@ -143,8 +159,6 @@ class Game:
                 scaled_sprite = pygame.transform.scale_by(sprite.image, self.zoom_level)
                 self.screen.blit(scaled_sprite, scaled_rect)
 
-                
-
         for sprite in sorted(self.all_sprites, key= lambda sprite: sprite.rect.centery):
             if self.screen.get_rect().colliderect(sprite.rect):
                 #   self.screen_buffer.blit(sprite.image, sprite.rect)
@@ -163,10 +177,8 @@ class Game:
                         if self.digging:
                             ActiveTile(self, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
 
-
         for sprite in sorted(self.top_sprites, key= lambda sprite: sprite.rect.centery):
             if self.screen.get_rect().colliderect(sprite.rect):
-                #   self.screen_buffer.blit(sprite.image, sprite.rect)
                 scaled_rect = sprite.rect.copy()
                 scaled_rect.width = int(sprite.rect.width*self.zoom_level)
                 scaled_rect.height = int(sprite.rect.height*self.zoom_level)
@@ -174,14 +186,14 @@ class Game:
                 scaled_rect.y = int(sprite.rect.y*self.zoom_level)
                 scaled_sprite = pygame.transform.scale_by(sprite.image, self.zoom_level)
                 self.screen.blit(scaled_sprite, scaled_rect)
-        
-        
-        #   LOGIC FOR CAMERA ZOOM HERE - SELF.SCREEN_BUFFER.TRANSFORM OR SOMETHING
-        
-        #   zoomed = pygame.transform.scale_by(self.screen_buffer, self.zoom_level)
-               
 
-        #   self.screen.blit(self.screen_buffer, self.screen.get_rect())
+        if self.start_pos and self.end_pos:
+            rect_width = self.end_pos[0] - self.start_pos[0]
+            rect_height = self.end_pos[1] - self.start_pos[1]
+            self.selection_rect = pygame.draw.rect(self.screen, GREEN, (self.start_pos[0], self.start_pos[1], rect_width, rect_height), 2)
+        else:
+            self.selection_rect = 0
+
         self.clock.tick(FPS)
         pygame.display.update()
 
