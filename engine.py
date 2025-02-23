@@ -125,6 +125,11 @@ class Game:
             else:
                 self.zoom_level = 0.9
 
+        if keys[pygame.K_LSHIFT]:
+            self.camera_speed = self.camera_speed * 2
+        else:
+            self.camera_speed = self.camera_speed
+
     def update(self):
         
         self.bottom_sprites.update()
