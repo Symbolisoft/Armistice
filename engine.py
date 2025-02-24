@@ -23,6 +23,8 @@ class Game:
         self.playing = False
 
         self.screen = pygame.display.set_mode((SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
+        self.icon = pygame.image.load('img/ui_images/pointer_default.png')
+        pygame.display.set_icon(self.icon)
         self.screen_buffer = pygame.Surface((SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
         self.screen_buffer_rect = self.screen_buffer.get_rect(x=0, y=0)
         pygame.display.set_caption('Armistice')
@@ -36,6 +38,11 @@ class Game:
         self.dirt_spritesheet_dark = SpriteSheet('img/terrain_spritesheets/dirt_spritesheet_dark.png')
         self.active_tile_spritesheet = SpriteSheet('img/ui_images/active_tile.png')
         self.trench_furnishings_spritesheet = SpriteSheet('img/object_spritesheets/trench_furnishings_spritesheet.png')
+        self.attack_pointer_spritesheet = SpriteSheet('img/ui_images/attack_pointer_spritesheet.png')
+        self.move_pointer_spritesheet = SpriteSheet('img/ui_images/move_pointer_spritesheet.png')
+
+
+        self.default_mouse = pygame.image.load('img/ui_images/pointer_default.png')
 
         if pygame.joystick.get_count() > 0:
             self.joystick = pygame.joystick.Joystick(0)
@@ -55,6 +62,27 @@ class Game:
         self.start_pos = 0
         self.end_pos = 0
         self.selection_rect = 0
+
+        pygame.mouse.set_visible(False)
+
+        self.mouse = self.default_mouse
+
+        self.unit_attack = False
+        self.unit_attack_loop = 0
+        self.unit_attack_cursor_animations = [
+            self.attack_pointer_spritesheet.get_sprite(0, 0, 32, 32),
+            self.attack_pointer_spritesheet.get_sprite(32, 0, 32, 32),
+            self.attack_pointer_spritesheet.get_sprite(64, 0, 32, 32)
+        ]
+
+
+        self.unit_move = False
+        self.unit_move_loop = 0
+        self.unit_move_cursor_animations = [
+            self.move_pointer_spritesheet.get_sprite(0, 0, 32, 32),
+            self.move_pointer_spritesheet.get_sprite(32, 0, 32, 32),
+            self.move_pointer_spritesheet.get_sprite(64, 0, 32, 32)
+        ]
 
     def new_game(self):
         self.playing = True
@@ -130,6 +158,18 @@ class Game:
         else:
             self.camera_speed = self.camera_speed
 
+        if keys[pygame.K_LCTRL]:
+            #   ADD CONDITION :- if unit selected (once units are implemented)
+            self.unit_attack = True
+        else:
+            self.unit_attack = False
+
+        if keys[pygame.K_m]:
+            #   CHANGE CONDITION TO ONCE UNIT SELECTED
+            self.unit_move = True
+        else:
+            self.unit_move = False
+
     def update(self):
         
         self.bottom_sprites.update()
@@ -148,6 +188,19 @@ class Game:
             self.camera_speed = 8
         if self.camera_speed <= 4:
             self.camera_speed = 4
+
+        if self.unit_attack:
+            self.mouse = self.unit_attack_cursor_animations[math.floor(self.unit_attack_loop)]
+            self.unit_attack_loop += 0.5
+            if self.unit_attack_loop >= 3:
+                self.unit_attack_loop = 0
+        elif self.unit_move:
+            self.mouse = self.unit_move_cursor_animations[math.floor(self.unit_move_loop)]
+            self.unit_move_loop += 0.5
+            if self.unit_move_loop >= 3:
+                self.unit_move_loop = 0
+        else:
+            self.mouse = self.default_mouse
 
     def draw(self):
         self.screen.fill(BLACK)
@@ -198,6 +251,13 @@ class Game:
             self.selection_rect = pygame.draw.rect(self.screen, GREEN, (self.start_pos[0], self.start_pos[1], rect_width, rect_height), 2)
         else:
             self.selection_rect = 0
+
+        if self.unit_attack:
+            self.screen.blit(self.mouse, (mouse_pos[0]-16, mouse_pos[1]-16))
+        elif self.unit_move:
+            self.screen.blit(self.mouse, (mouse_pos[0]-16, mouse_pos[1]-16))
+        else:
+            self.screen.blit(self.mouse, mouse_pos)
 
         self.clock.tick(FPS)
         pygame.display.update()
