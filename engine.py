@@ -268,5 +268,5 @@ class Game:
             self.update()
             self.draw()
 
-    def intro_screen(self):
+    def main_menu(self):
         pass
