@@ -19,6 +19,8 @@ class Button:
         self.image = pygame.Surface((self.width, self.height))
         self.rect = self.image.get_rect()
         self.image.fill(self.bg)
+        self.image.set_alpha(128)
+        
 
         self.text = self.font.render(self.content, True, self.fg)
         self.text_rect = self.text.get_rect(center= (self.width/2, self.height/2))

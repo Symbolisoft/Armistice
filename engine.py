@@ -8,7 +8,7 @@ from sprites.spritesheet import *
 from sprites.dirt import *
 from configs.screen_config import *
 from map_translator import *
-from main_menu import *
+from menus.main_menu import *
 from camera import *
 
 
@@ -33,6 +33,7 @@ class Game:
         self.camera = Camera(self)
         self.faction = 'None'
         self.font = pygame.font.Font('jennifer.ttf', 18)
+        self.font_lg = pygame.font.Font('jennifer.ttf', 26)
 
 
         #   SPRITESHEETS

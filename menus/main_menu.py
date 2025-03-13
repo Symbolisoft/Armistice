@@ -2,6 +2,9 @@ import pygame
 
 from sprites.button import *
 from configs.screen_config import *
+from menus.faction_menu import *
+
+
 
 class MainMenu:
     def __init__(self, game):
@@ -36,7 +39,9 @@ class MainMenu:
         self.main_menu = True
         self.green_rect = pygame.image.load('img/ui_images/main_menu_rect.png').convert_alpha()
         self.green_rect_rect = self.green_rect.get_rect(x=SCREEN_WIDTH-320, y=280)
+        self.button_timer = pygame.time.get_ticks()
 
+        
 
     def events(self):
         for event in pygame.event.get():
@@ -47,6 +52,30 @@ class MainMenu:
                 self.main_menu = False
 
         
+
+        mouse_pos = pygame.mouse.get_pos()
+        mouse_pressed = pygame.mouse.get_pressed()
+        now = pygame.time.get_ticks()
+        if now - self.button_timer >= 500:
+            if self.factions_button.is_pressed(mouse_pos, mouse_pressed):
+                print('factions')
+                self.main_menu = False
+                faction_menu = FactionMenu(self.game)    
+                faction_menu.loop()
+                self.button_timer = now
+            if self.campaign_button.is_pressed(mouse_pos, mouse_pressed):
+                print('campaign')
+                self.button_timer = now
+            if self.skirmish_button.is_pressed(mouse_pos, mouse_pressed):
+                print('skirmish')
+                self.button_timer = now
+            if self.map_editor_button.is_pressed(mouse_pos, mouse_pressed):
+                print('map editor')
+                self.button_timer = now
+            if self.settings_button.is_pressed(mouse_pos, mouse_pressed):
+                print('settings')
+                self.button_timer = now
+
 
     def update(self):
 
@@ -60,6 +89,8 @@ class MainMenu:
             self.flag = self.german_flag
         elif self.game.faction == 'Aus-Hung':
             self.flag = self.aus_hung_flag
+
+        
 
     def draw(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -75,6 +106,9 @@ class MainMenu:
         self.screen.blit(self.skirmish_button.image, self.skirmish_button.rect)
         self.screen.blit(self.map_editor_button.image, self.map_editor_button.rect)
         self.screen.blit(self.settings_button.image, self.settings_button.rect)
+
+            
+        
 
 
         if self.factions_button.rect.collidepoint(mouse_pos):
