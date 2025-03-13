@@ -8,6 +8,7 @@ from sprites.spritesheet import *
 from sprites.dirt import *
 from configs.screen_config import *
 from map_translator import *
+from main_menu import *
 from camera import *
 
 
@@ -30,6 +31,8 @@ class Game:
         pygame.display.set_caption('Armistice')
 
         self.camera = Camera(self)
+        self.faction = 'None'
+        self.font = pygame.font.Font('jennifer.ttf', 18)
 
 
         #   SPRITESHEETS
@@ -269,4 +272,5 @@ class Game:
             self.draw()
 
     def main_menu(self):
-        pass
+        m = MainMenu(self)
+        m.loop()
