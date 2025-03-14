@@ -59,7 +59,7 @@ class MainMenu:
         if now - self.button_timer >= 500:
             if self.factions_button.is_pressed(mouse_pos, mouse_pressed):
                 print('factions')
-                self.main_menu = False
+                
                 faction_menu = FactionMenu(self.game)    
                 faction_menu.loop()
                 self.button_timer = now

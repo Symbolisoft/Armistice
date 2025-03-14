@@ -46,7 +46,7 @@ class FactionMenu:
                 self.game.playing = False
                 self.game.running = False
                 self.faction_menu = False
-                self.game.main_menu()
+                #   self.game.main_menu()
 
         
 
@@ -57,23 +57,23 @@ class FactionMenu:
         if now - self.button_timer >= 500:
             if self.back_button.is_pressed(mouse_pos, mouse_pressed):
                 self.faction_menu = False
-                self.game.main_menu()
+                
             if self.britain_button.is_pressed(mouse_pos, mouse_pressed):
                 self.game.faction = 'Britain'
                 self.faction_menu = False
-                self.game.main_menu()
+                
             if self.france_button.is_pressed(mouse_pos, mouse_pressed):
                 self.game.faction = 'France'
                 self.faction_menu = False
-                self.game.main_menu()
+                
             if self.germany_button.is_pressed(mouse_pos, mouse_pressed):
                 self.game.faction = 'Germany'
                 self.faction_menu = False
-                self.game.main_menu()
+                
             if self.aus_hung_button.is_pressed(mouse_pos, mouse_pressed):
                 self.game.faction = 'Aus-Hung'
                 self.faction_menu = False
-                self.game.main_menu()
+                
 
 
     def update(self):
