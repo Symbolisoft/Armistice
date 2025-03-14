@@ -3,6 +3,7 @@ import pygame
 from sprites.button import *
 from configs.screen_config import *
 from menus.faction_menu import *
+from menus.brit_campaign_menu import *
 
 
 
@@ -12,9 +13,10 @@ class MainMenu:
         self.screen = self.game.screen
         self.bg_image = pygame.image.load('img/ui_images/cover-art-poppy.png').convert()
         self.bg_image = pygame.transform.scale(self.bg_image, (SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
+        self.game.last_post.play(-1)
 
         self.faction_label = self.game.font.render(f'Selected Faction:  {self.game.faction}', True, (200, 200, 200))
-        self.faction_label_rect = self.faction_label.get_rect(x=SCREEN_WIDTH-280, y=320)
+        self.faction_label_rect = self.faction_label.get_rect(x=SCREEN_WIDTH-280, y=310)
 
         self.brit_flag = pygame.image.load('img/ui_images/british_flag.jpg').convert()
         self.brit_flag = pygame.transform.scale(self.brit_flag, (150, 75))
@@ -31,7 +33,7 @@ class MainMenu:
         
 
         self.factions_button = Button(self.game, SCREEN_WIDTH-270, 430, 200, 40, BLACK, (180, 180, 180), 'Choose Faction', 22)
-        self.campaign_button = Button(self.game, SCREEN_WIDTH-270, 475, 200, 40, BLACK, (180, 180, 180), 'Start Campaign', 22)
+        self.campaign_button = Button(self.game, SCREEN_WIDTH-270, 475, 200, 40, BLACK, (180, 180, 180), 'Campaign', 22)
         self.skirmish_button = Button(self.game, SCREEN_WIDTH-270, 530, 200, 40, BLACK, (180, 180, 180), 'Skirmish', 22)
         self.map_editor_button = Button(self.game, SCREEN_WIDTH-270, 575, 200, 40, BLACK, (180, 180, 180), 'Map Editor', 22)
         self.settings_button = Button(self.game, SCREEN_WIDTH-270, 630, 200, 40, BLACK, (180, 180, 180), 'Settings', 22)
@@ -58,14 +60,18 @@ class MainMenu:
         now = pygame.time.get_ticks()
         if now - self.button_timer >= 500:
             if self.factions_button.is_pressed(mouse_pos, mouse_pressed):
-                print('factions')
-                
                 faction_menu = FactionMenu(self.game)    
                 faction_menu.loop()
                 self.button_timer = now
             if self.campaign_button.is_pressed(mouse_pos, mouse_pressed):
-                print('campaign')
-                self.button_timer = now
+                if self.game.faction == 'Britain':
+                    brit_campaign_menu = BritCampaignMenu(self.game)
+                    brit_campaign_menu.loop()
+                    self.button_timer = now
+                if self.game.faction == 'France':
+                    pass
+                if self.game.faction == 'Germany':
+                    pass
             if self.skirmish_button.is_pressed(mouse_pos, mouse_pressed):
                 print('skirmish')
                 self.button_timer = now
@@ -112,14 +118,19 @@ class MainMenu:
 
 
         if self.factions_button.rect.collidepoint(mouse_pos):
+            self.factions_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.factions_button.x-3, self.factions_button.y-3, self.factions_button.width+6, self.factions_button.height+6), 3, border_radius=5)
         if self.campaign_button.rect.collidepoint(mouse_pos):
+            self.campaign_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.campaign_button.x-3, self.campaign_button.y-3, self.campaign_button.width+6, self.campaign_button.height+6), 3, border_radius=5)
         if self.skirmish_button.rect.collidepoint(mouse_pos):
+            self.skirmish_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.skirmish_button.x-3, self.skirmish_button.y-3, self.skirmish_button.width+6, self.skirmish_button.height+6), 3, border_radius=5)
         if self.map_editor_button.rect.collidepoint(mouse_pos):
+            self.map_editor_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.map_editor_button.x-3, self.map_editor_button.y-3, self.map_editor_button.width+6, self.map_editor_button.height+6), 3, border_radius=5)
         if self.settings_button.rect.collidepoint(mouse_pos):
+            self.settings_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.settings_button.x-3, self.settings_button.y-3, self.settings_button.width+6, self.settings_button.height+6), 3, border_radius=5)
 
         

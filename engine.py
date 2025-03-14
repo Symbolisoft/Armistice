@@ -35,6 +35,10 @@ class Game:
         self.font = pygame.font.Font('jennifer.ttf', 18)
         self.font_lg = pygame.font.Font('jennifer.ttf', 26)
 
+        #   sounds
+
+        self.last_post = pygame.mixer.Sound('snd/last-post.wav')
+
 
         #   SPRITESHEETS
 
