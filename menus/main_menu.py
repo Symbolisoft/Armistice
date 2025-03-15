@@ -77,6 +77,7 @@ class MainMenu:
                 self.button_timer = now
             if self.map_editor_button.is_pressed(mouse_pos, mouse_pressed):
                 self.main_menu = False
+                self.game.last_post.stop()
                 self.game.map_editor()
                 self.button_timer = now
             if self.settings_button.is_pressed(mouse_pos, mouse_pressed):
