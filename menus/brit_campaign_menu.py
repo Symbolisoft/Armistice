@@ -12,7 +12,8 @@ class BritCampaignMenu:
         self.bg_image = pygame.image.load('img/ui_images/brit_campaign_bg.png').convert()
         self.bg_image = pygame.transform.scale(self.bg_image, (SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
         self.green_rect = pygame.image.load('img/ui_images/main_menu_rect.png').convert_alpha()
-        self.green_rect_rect = self.green_rect.get_rect(x=SCREEN_WIDTH-350, y=280)
+        self.green_rect = pygame.transform.scale(self.green_rect, (350, 600))
+        self.green_rect_rect = self.green_rect.get_rect(centerx=SCREEN_WIDTH/2, y=150)
 
         self.title = self.game.font_lg.render('Campaign - Great Britain', True, GREEN)
         self.title_rect = self.title.get_rect(centerx=SCREEN_WIDTH/2, centery=50)
@@ -22,7 +23,9 @@ class BritCampaignMenu:
         self.brit_flag = pygame.transform.scale(self.brit_flag, (200, 100))
         self.brit_flag_rect = self.brit_flag.get_rect(centerx=SCREEN_WIDTH/2, centery=120)
         
-        self.back_button = Button(self.game, 1080, 600, 200, 40, BLACK, (180, 180, 180), 'Back', 22)
+        self.new_button = Button(self.game, 580, 350, 200, 40, BLACK, (180, 180, 180), 'New Campaign', 22)
+        self.load_button = Button(self.game, 580, 400, 200, 40, BLACK, (180, 180, 180), 'Load Campaign', 22)
+        self.back_button = Button(self.game, 580, 600, 200, 40, BLACK, (180, 180, 180), 'Back', 22)
 
         self.brit_campaign_menu = True
         
@@ -61,11 +64,19 @@ class BritCampaignMenu:
         self.screen.blit(self.brit_flag, self.brit_flag_rect)
         self.screen.blit(self.green_rect, self.green_rect_rect)
         
+        self.screen.blit(self.new_button.image, self.new_button.rect)
+        self.screen.blit(self.load_button.image, self.load_button.rect)
         self.screen.blit(self.back_button.image, self.back_button.rect)
 
         if self.back_button.rect.collidepoint(mouse_pos):
             self.back_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.back_button.x-3, self.back_button.y-3, self.back_button.width+6, self.back_button.height+6), 3, border_radius=5)
+        if self.new_button.rect.collidepoint(mouse_pos):
+            self.new_button.fg = GREEN
+            pygame.draw.rect(self.screen, GREEN, (self.new_button.x-3, self.new_button.y-3, self.new_button.width+6, self.new_button.height+6), 3, border_radius=5)
+        if self.load_button.rect.collidepoint(mouse_pos):
+            self.load_button.fg = GREEN
+            pygame.draw.rect(self.screen, GREEN, (self.load_button.x-3, self.load_button.y-3, self.load_button.width+6, self.load_button.height+6), 3, border_radius=5)
         
 
 

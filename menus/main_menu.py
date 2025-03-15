@@ -4,6 +4,8 @@ from sprites.button import *
 from configs.screen_config import *
 from menus.faction_menu import *
 from menus.brit_campaign_menu import *
+from menus.french_campaign_menu import *
+from menus.german_campaign_menu import *
 
 
 
@@ -30,8 +32,6 @@ class MainMenu:
         self.flag = pygame.image.load('img/ui_images/empty.png')
         self.flag = pygame.transform.scale(self.flag, (150, 75))
 
-        
-
         self.factions_button = Button(self.game, SCREEN_WIDTH-270, 430, 200, 40, BLACK, (180, 180, 180), 'Choose Faction', 22)
         self.campaign_button = Button(self.game, SCREEN_WIDTH-270, 475, 200, 40, BLACK, (180, 180, 180), 'Campaign', 22)
         self.skirmish_button = Button(self.game, SCREEN_WIDTH-270, 530, 200, 40, BLACK, (180, 180, 180), 'Skirmish', 22)
@@ -43,8 +43,6 @@ class MainMenu:
         self.green_rect_rect = self.green_rect.get_rect(x=SCREEN_WIDTH-320, y=280)
         self.button_timer = pygame.time.get_ticks()
 
-        
-
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -52,8 +50,6 @@ class MainMenu:
                 self.game.playing = False
                 self.game.running = False
                 self.main_menu = False
-
-        
 
         mouse_pos = pygame.mouse.get_pos()
         mouse_pressed = pygame.mouse.get_pressed()
@@ -69,19 +65,23 @@ class MainMenu:
                     brit_campaign_menu.loop()
                     self.button_timer = now
                 if self.game.faction == 'France':
-                    pass
+                    french_campaign_menu = FrenchCampaignMenu(self.game)
+                    french_campaign_menu.loop()
+                    self.button_timer = now
                 if self.game.faction == 'Germany':
-                    pass
+                    german_campaign_menu = GermanCampaignMenu(self.game)
+                    german_campaign_menu.loop()
+                    self.button_timer = now
             if self.skirmish_button.is_pressed(mouse_pos, mouse_pressed):
                 print('skirmish')
                 self.button_timer = now
             if self.map_editor_button.is_pressed(mouse_pos, mouse_pressed):
-                print('map editor')
+                self.main_menu = False
+                self.game.map_editor()
                 self.button_timer = now
             if self.settings_button.is_pressed(mouse_pos, mouse_pressed):
                 print('settings')
                 self.button_timer = now
-
 
     def update(self):
 
@@ -93,10 +93,6 @@ class MainMenu:
             self.flag = self.french_flag
         elif self.game.faction == 'Germany':
             self.flag = self.german_flag
-        elif self.game.faction == 'Aus-Hung':
-            self.flag = self.aus_hung_flag
-
-        
 
     def draw(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -112,10 +108,6 @@ class MainMenu:
         self.screen.blit(self.skirmish_button.image, self.skirmish_button.rect)
         self.screen.blit(self.map_editor_button.image, self.map_editor_button.rect)
         self.screen.blit(self.settings_button.image, self.settings_button.rect)
-
-            
-        
-
 
         if self.factions_button.rect.collidepoint(mouse_pos):
             self.factions_button.fg = GREEN
@@ -133,8 +125,6 @@ class MainMenu:
             self.settings_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.settings_button.x-3, self.settings_button.y-3, self.settings_button.width+6, self.settings_button.height+6), 3, border_radius=5)
 
-        
-        
         self.screen.blit(self.game.mouse, mouse_pos)
 
         self.game.clock.tick(FPS)

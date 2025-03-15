@@ -9,6 +9,8 @@ from sprites.dirt import *
 from configs.screen_config import *
 from map_translator import *
 from menus.main_menu import *
+from map_editor import *
+
 from camera import *
 
 
@@ -92,8 +94,23 @@ class Game:
             self.move_pointer_spritesheet.get_sprite(64, 0, 32, 32)
         ]
 
-    def new_game(self):
-        self.playing = True
+        self.map_editor_open = False
+
+        self.all_sprites = []
+        self.reference_sprite = []
+        self.dirt_group = []
+        self.active_tile_group = []
+        self.bunks = []
+        self.sandbags = []
+        self.firing_steps = []
+        self.ladders = []
+        self.barbed_wire = []
+        self.bottom_sprites = []
+        self.top_sprites = []
+
+    def map_editor(self):
+        
+        self.map_editor_open = True
 
         self.all_sprites = pygame.sprite.LayeredUpdates()
         self.reference_sprite = pygame.sprite.LayeredUpdates()
@@ -107,11 +124,9 @@ class Game:
         self.bottom_sprites = pygame.sprite.LayeredUpdates()
         self.top_sprites = pygame.sprite.LayeredUpdates()
 
-        
-
-        
-        self.ground_map_layer_2 = ground_map_translator(self, 'data/maps/ground_map.amf')
-        self.funiture_map = furniture_map_translator(self, 'data/maps/furniture_map.amf')
+        self.map_editor_window = MapEditor(self)
+        while self.map_editor_open:
+            self.map_editor_window.loop()
 
     def events(self):
         for event in pygame.event.get():
