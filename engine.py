@@ -24,6 +24,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         self.playing = False
+        self.camp_level = 1
 
         self.screen = pygame.display.set_mode((SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
         self.icon = pygame.image.load('img/ui_images/pointer_default.png')
