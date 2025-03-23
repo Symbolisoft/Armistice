@@ -3,6 +3,7 @@ import pygame
 from configs.screen_config import *
 from sprites.button import *
 from menus.faction_text import *
+from campaigns.campaigns import *
 
 
 class GermanCampaignMenu:
@@ -18,12 +19,45 @@ class GermanCampaignMenu:
         self.title = self.game.font_lg.render('Campaign - Germany', True, GREEN)
         self.title_rect = self.title.get_rect(centerx=SCREEN_WIDTH/2, centery=50)
 
+        self.line1 = self.game.font_lg.render(f'Mission {self.game.camp_level}:', True, GREEN)
+        self.line1_rect = self.line1.get_rect(x=850, y=150)
+        self.line2 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][0]}', True, GREEN)
+        self.line2_rect = self.line2.get_rect(x=850, y=190)
+        self.line3 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][1]}', True, GREEN)
+        self.line3_rect = self.line3.get_rect(x=850, y=220)
+        self.line4 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][2]}', True, GREEN)
+        self.line4_rect = self.line4.get_rect(x=850, y=240)
+        self.line5 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][3]}', True, GREEN)
+        self.line5_rect = self.line5.get_rect(x=850, y=260)
+        self.line6 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][4]}', True, GREEN)
+        self.line6_rect = self.line6.get_rect(x=850, y=280)
+        self.line7 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][5]}', True, GREEN)
+        self.line7_rect = self.line7.get_rect(x=850, y=300)
+        self.line8 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][6]}', True, GREEN)
+        self.line8_rect = self.line8.get_rect(x=850, y=330)
+        self.line9 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][7]}', True, GREEN)
+        self.line9_rect = self.line9.get_rect(x=850, y=350)
+        self.line10 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][8]}', True, GREEN)
+        self.line10_rect = self.line10.get_rect(x=850, y=370)
+        self.line11 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][9]}', True, GREEN)
+        self.line11_rect = self.line11.get_rect(x=850, y=390)
+        self.line12 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][10]}', True, GREEN)
+        self.line12_rect = self.line12.get_rect(x=850, y=420)
+        self.line13 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][11]}', True, GREEN)
+        self.line13_rect = self.line13.get_rect(x=850, y=440)
+        self.line14 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][12]}', True, GREEN)
+        self.line14_rect = self.line14.get_rect(x=850, y=460)
+        self.line15 = self.game.font.render(f'{GERMAN_CAMPAIGN[self.game.camp_level-1][13]}', True, GREEN)
+        self.line15_rect = self.line15.get_rect(x=850, y=480)
+
         
         self.german_flag = pygame.image.load('img/ui_images/german_flag.jpg').convert()
         self.german_flag = pygame.transform.scale(self.german_flag, (200, 100))
         self.german_flag_rect = self.german_flag.get_rect(centerx=SCREEN_WIDTH/2, centery=120)
         
-        self.new_button = Button(self.game, 580, 350, 200, 40, BLACK, (180, 180, 180), 'New Campaign', 22)
+        self.new_button = Button(self.game, 580, 250, 200, 40, BLACK, (180, 180, 180), 'New Campaign', 22)
+        self.continue_button = Button(self.game, 580, 300, 200, 40, BLACK, (180, 180, 180), 'Continue', 22)
+        self.save_button = Button(self.game, 580, 350, 200, 40, BLACK, (180, 180, 180), 'Save Campaign', 22)
         self.load_button = Button(self.game, 580, 400, 200, 40, BLACK, (180, 180, 180), 'Load Campaign', 22)
         self.back_button = Button(self.game, 580, 600, 200, 40, BLACK, (180, 180, 180), 'Back', 22)
 
@@ -63,8 +97,26 @@ class GermanCampaignMenu:
         self.screen.blit(self.title, self.title_rect)
         self.screen.blit(self.german_flag, self.german_flag_rect)
         self.screen.blit(self.green_rect, self.green_rect_rect)
+        self.screen.blit(self.line1, self.line1_rect)
+        self.screen.blit(self.line2, self.line2_rect)
+        self.screen.blit(self.line3, self.line3_rect)
+        self.screen.blit(self.line4, self.line4_rect)
+        self.screen.blit(self.line5, self.line5_rect)
+        self.screen.blit(self.line6, self.line6_rect)
+        self.screen.blit(self.line7, self.line7_rect)
+        self.screen.blit(self.line8, self.line8_rect)
+        self.screen.blit(self.line9, self.line9_rect)
+        self.screen.blit(self.line10, self.line10_rect)
+        self.screen.blit(self.line11, self.line11_rect)
+        self.screen.blit(self.line12, self.line12_rect)
+        self.screen.blit(self.line13, self.line13_rect)
+        self.screen.blit(self.line14, self.line14_rect)
+        self.screen.blit(self.line15, self.line15_rect)
         
+        
+        self.screen.blit(self.continue_button.image, self.continue_button.rect)
         self.screen.blit(self.new_button.image, self.new_button.rect)
+        self.screen.blit(self.save_button.image, self.save_button.rect)
         self.screen.blit(self.load_button.image, self.load_button.rect)
         self.screen.blit(self.back_button.image, self.back_button.rect)
 
@@ -77,6 +129,13 @@ class GermanCampaignMenu:
         if self.load_button.rect.collidepoint(mouse_pos):
             self.load_button.fg = GREEN
             pygame.draw.rect(self.screen, GREEN, (self.load_button.x-3, self.load_button.y-3, self.load_button.width+6, self.load_button.height+6), 3, border_radius=5)
+        if self.continue_button.rect.collidepoint(mouse_pos):
+            self.continue_button.fg = GREEN
+            pygame.draw.rect(self.screen, GREEN, (self.continue_button.x-3, self.continue_button.y-3, self.continue_button.width+6, self.continue_button.height+6), 3, border_radius=5)
+        if self.game.camp_level > 1:
+            if self.save_button.rect.collidepoint(mouse_pos):
+                self.save_button.fg = GREEN
+                pygame.draw.rect(self.screen, GREEN, (self.save_button.x-3, self.save_button.y-3, self.save_button.width+6, self.save_button.height+6), 3, border_radius=5)
         
 
 

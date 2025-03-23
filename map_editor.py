@@ -141,7 +141,6 @@ class MapEditor:
         self.game.clock.tick(FPS)
         pygame.display.update()
 
-
     def loop(self):
         self.events()
         self.update()
