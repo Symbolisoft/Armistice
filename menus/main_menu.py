@@ -16,6 +16,7 @@ class MainMenu:
         self.bg_image = pygame.image.load('img/ui_images/cover-art-poppy.png').convert()
         self.bg_image = pygame.transform.scale(self.bg_image, (SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
         self.game.last_post.play(-1)
+        
 
         self.faction_label = self.game.font.render(f'Selected Faction:  {self.game.faction}', True, (200, 200, 200))
         self.faction_label_rect = self.faction_label.get_rect(x=SCREEN_WIDTH-280, y=310)

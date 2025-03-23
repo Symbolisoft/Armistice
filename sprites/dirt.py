@@ -10,7 +10,7 @@ class Dirt1(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = GROUND_LAYER_1
-        self.groups = self.game.bottom_sprites, self.game.dirt_group
+        self.groups = self.game.bottom_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
 
         self.x = (x-16)*TILESIZE
@@ -78,9 +78,7 @@ class Dirt2(pygame.sprite.Sprite):
         self.active_timer = pygame.time.get_ticks()
 
     def update(self):
-        mouse_pos = pygame.mouse.get_pos()
-        click_1 = pygame.mouse.get_pressed()
-        click_2 = pygame.mouse.get_pressed()
+        
         self.x_dif = self.x - self.init_x
         self.y_dif = self.y - self.init_y
 

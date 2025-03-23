@@ -2,6 +2,7 @@ import pygame
 
 from ui_elements.map_editor_ui import *
 from map_translator import *
+from sprites.dirt import *
 
 class MapEditor:
     def __init__(self, game):
@@ -56,6 +57,16 @@ class MapEditor:
             self.game.camera_speed = self.game.camera_speed * 2
         else:
             self.game.camera_speed = self.game.camera_speed
+
+        mouse_pos = pygame.mouse.get_pos()
+        mouse_pressed = pygame.mouse.get_pressed()
+
+        if mouse_pressed[2]:
+            for sprite in self.game.dirt_group:
+                for tile in self.game.active_tile_group:
+                    if sprite.rect.collidepoint(tile.rect.x+(TILESIZE/2), tile.rect.y+(TILESIZE/4)):
+                        
+                        sprite.kill()
 
         
 
