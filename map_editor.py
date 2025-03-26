@@ -11,6 +11,7 @@ class MapEditor:
 
         self.game.map_editor_open = True
 
+        self.game.map_bottom = ground_map_translator(self.game, 'data/maps/map_editor_bottom_layer.amf')
         self.game.map_start = ground_map_translator(self.game, 'data/maps/map_editor_start.amf')
 
         self.map_ui = MapUI(self.game)
@@ -65,7 +66,7 @@ class MapEditor:
             for sprite in self.game.dirt_group:
                 for tile in self.game.active_tile_group:
                     if sprite.rect.collidepoint(tile.rect.x+(TILESIZE/2), tile.rect.y+(TILESIZE/4)):
-                        
+                        Dirt1(self.game, (sprite.rect.x+sprite.x_dif)/TILESIZE, (sprite.rect.y+sprite.y_dif)/(TILESIZE/2))
                         sprite.kill()
 
         
@@ -123,7 +124,7 @@ class MapEditor:
                 scaled_sprite = pygame.transform.scale_by(sprite.image, self.game.zoom_level)
                 self.screen.blit(scaled_sprite, scaled_rect)
 
-                if sprite == Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
+                if sprite == Dirt1 or Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
                     mouse_pos = pygame.mouse.get_pos()
                     hits = scaled_rect.collidepoint(mouse_pos)
                     if hits:
