@@ -14,6 +14,7 @@
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -27,9 +28,9 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
      inkscape:clip-to-page="true"
-     inkscape:zoom="0.34583057"
-     inkscape:cx="532.05244"
-     inkscape:cy="226.98977"
+     inkscape:zoom="0.48907828"
+     inkscape:cx="599.0861"
+     inkscape:cy="395.64218"
      inkscape:window-width="1366"
      inkscape:window-height="745"
      inkscape:window-x="-8"
@@ -37,7 +38,130 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern7"
+       preserveAspectRatio="xMidYMid"
+       id="pattern8"
+       patternTransform="scale(0.05)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="10"
+       height="10"
+       preserveAspectRatio="xMidYMid"
+       style="fill:#000000"
+       id="pattern7"
+       x="0"
+       y="0"
+       inkscape:label="Halftones"
+       inkscape:collect="always"
+       inkscape:isstock="true">
+      <g
+         id="g7"
+         style="display:inline"
+         transform="scale(0.1)">
+        <circle
+           style="fill-opacity:1;stroke:none;paint-order:markers fill stroke;stop-color:#000000"
+           id="circle4"
+           cx="50"
+           cy="50"
+           r="25" />
+        <path
+           id="path4"
+           style="paint-order:markers fill stroke"
+           d="M 25,0 A 25,25 0 0 1 0,25 25,25 0 0 1 -25,0 25,25 0 0 1 0,-25 25,25 0 0 1 25,0 Z" />
+        <path
+           id="path5"
+           style="paint-order:markers fill stroke"
+           d="M 125,0 A 25,25 0 0 1 100,25 25,25 0 0 1 75,0 25,25 0 0 1 100,-25 25,25 0 0 1 125,0 Z" />
+        <path
+           id="path6"
+           style="paint-order:markers fill stroke"
+           d="M 25,100 A 25,25 0 0 1 0,125 25,25 0 0 1 -25,100 25,25 0 0 1 0,75 25,25 0 0 1 25,100 Z" />
+        <path
+           id="path7"
+           style="paint-order:markers fill stroke"
+           d="m 125,100 a 25,25 0 0 1 -25,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25,25 z" />
+      </g>
+    </pattern>
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#halftones"
+       preserveAspectRatio="xMidYMid"
+       id="pattern2"
+       patternTransform="scale(0.05)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="10"
+       height="10"
+       preserveAspectRatio="xMidYMid"
+       style="fill:#030a00"
+       id="halftones"
+       x="0"
+       y="0"
+       inkscape:label="Halftones"
+       inkscape:collect="always"
+       inkscape:isstock="true">
+      <g
+         id="fullPattern"
+         style="display:inline"
+         transform="scale(0.1)">
+        <circle
+           style="fill-opacity:1;stroke:none;paint-order:markers fill stroke;stop-color:#000000"
+           id="circle10"
+           cx="50"
+           cy="50"
+           r="25" />
+        <path
+           id="circle37"
+           style="paint-order:markers fill stroke"
+           d="M 25,0 A 25,25 0 0 1 0,25 25,25 0 0 1 -25,0 25,25 0 0 1 0,-25 25,25 0 0 1 25,0 Z" />
+        <path
+           id="circle39"
+           style="paint-order:markers fill stroke"
+           d="M 125,0 A 25,25 0 0 1 100,25 25,25 0 0 1 75,0 25,25 0 0 1 100,-25 25,25 0 0 1 125,0 Z" />
+        <path
+           id="circle43"
+           style="paint-order:markers fill stroke"
+           d="M 25,100 A 25,25 0 0 1 0,125 25,25 0 0 1 -25,100 25,25 0 0 1 0,75 25,25 0 0 1 25,100 Z" />
+        <path
+           id="circle45"
+           style="paint-order:markers fill stroke"
+           d="m 125,100 a 25,25 0 0 1 -25,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25,25 z" />
+      </g>
+    </pattern>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter8"
+       x="-0.0044294862"
+       y="-0.0208597"
+       width="1.008859"
+       height="1.0417194">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.62504974"
+         id="feGaussianBlur8" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter9"
+       x="-0.011771392"
+       y="-0.0058980847"
+       width="1.0235428"
+       height="1.0117962">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.29142748"
+         id="feGaussianBlur9" />
+    </filter>
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -45,13 +169,26 @@
     <path
        id="rect1"
        style="opacity:1;fill:#395939;fill-opacity:1;stroke-width:2.23758;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:17.9007, 4.47516, 2.23758, 4.47516;stroke-opacity:0.731707"
-       d="m 0,118.58528 h 338.66666 v 71.91471 H 0 Z" />
+       d="m 0,137.67071 h 338.66666 v 53.21926 H 0 Z" />
     <rect
        style="opacity:1;fill:#aea781;fill-opacity:1;stroke-width:2.23758;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:17.9007, 4.47516, 2.23758, 4.47516;stroke-opacity:0.731707"
        id="rect2"
        width="59.417439"
-       height="118.58527"
+       height="137.67072"
        x="279.24924"
        y="0" />
+    <path
+       id="path1"
+       style="opacity:1;mix-blend-mode:normal;fill:url(#pattern2);fill-opacity:1;stroke-width:2.60108;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20.8087, 5.20215, 2.60108, 5.20215;stroke-opacity:0.731707;filter:url(#filter8)"
+       d="m 0,118.58528 h 338.66666 v 71.91471 H 0 Z"
+       transform="matrix(1,0,0,0.74003307,0,49.91368)" />
+    <rect
+       style="opacity:1;mix-blend-mode:normal;fill:url(#pattern8);fill-opacity:1;stroke-width:2.0767;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:16.6136, 4.15339, 2.0767, 4.15339;stroke-opacity:0.731707;filter:url(#filter9)"
+       id="rect3"
+       width="59.417439"
+       height="118.58527"
+       x="279.24924"
+       y="0"
+       transform="scale(1,1.1609427)" />
   </g>
 </svg>

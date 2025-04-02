@@ -125,6 +125,13 @@ class Game:
         self.bottom_sprites = pygame.sprite.LayeredUpdates()
         self.top_sprites = pygame.sprite.LayeredUpdates()
 
+
+        self.digging_sounds = [
+            pygame.mixer.Sound('snd/digging-1.wav'),
+            pygame.mixer.Sound('snd/digging-2.wav'),
+            pygame.mixer.Sound('snd/digging-3.wav')
+            ]
+
         self.map_editor_window = MapEditor(self)
         while self.map_editor_open:
             self.map_editor_window.loop()

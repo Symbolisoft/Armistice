@@ -59,15 +59,23 @@ class MapEditor:
         else:
             self.game.camera_speed = self.game.camera_speed
 
-        mouse_pos = pygame.mouse.get_pos()
+        
         mouse_pressed = pygame.mouse.get_pressed()
 
         if mouse_pressed[2]:
+            sprites = []
             for sprite in self.game.dirt_group:
                 for tile in self.game.active_tile_group:
-                    if sprite.rect.collidepoint(tile.rect.x+(TILESIZE/2), tile.rect.y+(TILESIZE/4)):
-                        Dirt1(self.game, (sprite.rect.x+sprite.x_dif)/TILESIZE, (sprite.rect.y+sprite.y_dif)/(TILESIZE/2))
-                        sprite.kill()
+                    self.game.digging_sounds[random.randint(0, 2)].play(0)
+                    if sprite.rect.collidepoint(tile.rect.x+(TILESIZE/2), tile.rect.y+(TILESIZE/2)):
+                        sprites.append(sprite)
+                        
+            try:            
+                sprites[0].kill()
+            except IndexError:
+                pass
+            
+            sprites.clear()
 
         
 
@@ -112,6 +120,13 @@ class MapEditor:
                 scaled_rect.y = int(sprite.rect.y*self.game.zoom_level)
                 scaled_sprite = pygame.transform.scale_by(sprite.image, self.game.zoom_level)
                 self.screen.blit(scaled_sprite, scaled_rect)
+
+                if sprite == Dirt1 or Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
+                    mouse_pos = pygame.mouse.get_pos()
+                    hits = scaled_rect.collidepoint(mouse_pos)
+                    if hits:
+                       
+                        ActiveTile(self.game, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
 
         for sprite in sorted(self.game.all_sprites, key= lambda sprite: sprite.rect.centery):
             if self.screen.get_rect().colliderect(sprite.rect):
