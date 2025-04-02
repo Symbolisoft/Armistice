@@ -87,6 +87,7 @@ class MapEditor:
         self.game.all_sprites.update()
         self.game.top_sprites.update()
         self.game.camera.update()
+        self.map_ui.update()
 
 
         if self.game.zoom_level > 1.8:
@@ -104,7 +105,7 @@ class MapEditor:
         self.game.mouse = self.game.default_mouse
 
         
-        self.map_ui.update()
+        
 
     def draw(self):
         self.screen.fill(BLACK)

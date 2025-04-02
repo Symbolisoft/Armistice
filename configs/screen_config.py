@@ -3,6 +3,7 @@ import math
 
 SCREEN_WIDTH, SCREEN_HEIGHT = pyautogui.size()
 
+
 FPS = 60
 
 TILESIZE = 32
