@@ -43,6 +43,7 @@ class MainMenu:
         self.green_rect = pygame.image.load('img/ui_images/main_menu_rect.png').convert_alpha()
         self.green_rect_rect = self.green_rect.get_rect(x=SCREEN_WIDTH-320, y=280)
         self.button_timer = pygame.time.get_ticks()
+        self.game.map_editor_open = False
 
     def events(self):
         for event in pygame.event.get():

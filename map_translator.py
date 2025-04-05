@@ -3,6 +3,7 @@ from sprites.dirt import *
 from sprites.trench_walls import *
 from sprites.trench_furniture import *
 
+
 def ground_map_translator(game, map):
 
     file_path = Path(map)
@@ -162,3 +163,19 @@ def furniture_map_translator(game, map):
                 else:
                     BarbedWireLeft(game, x, (y+(16/TILESIZE))/2)
             
+def camera_block_map_translator(game, map):
+    file_path = Path(map)
+
+    with file_path.open('r') as file:
+        content = file.read()
+
+    for y, row in enumerate(content.split('\n')):
+        for x, col in enumerate(row.split(',')):
+            if col == '1':
+                EmptyBlockTop(game, x, y)
+            if col == '2':
+                EmptyBlockBottom(game, x, y)
+            if col == '3':
+                EmptyBlockLeft(game, x, y)
+            if col == '4':
+                EmptyBlockRight(game, x, y)

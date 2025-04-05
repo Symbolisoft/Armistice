@@ -1,5 +1,7 @@
 import pygame
 
+from configs.screen_config import *
+
 
 class Camera:
     def __init__(self, game):
@@ -32,3 +34,6 @@ class Camera:
             self.x_change -= self.game.camera_speed
         if keys[pygame.K_a]:
             self.x_change += self.game.camera_speed
+
+        
+            

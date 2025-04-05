@@ -9,12 +9,16 @@ class MapEditor:
         self.game = game
         self.screen = self.game.screen
 
+        self.mode = 'None'
+        
+
         self.game.map_editor_open = True
 
+        #   self.camera_limits = camera_block_map_translator(self.game, 'data/maps/map_editor_camera_limits.amf')
         self.game.map_bottom = ground_map_translator(self.game, 'data/maps/map_editor_bottom_layer.amf')
         self.game.map_start = ground_map_translator(self.game, 'data/maps/map_editor_start.amf')
 
-        self.map_ui = MapUI(self.game)
+        self.map_ui = MapUI(self.game, self)
 
     def events(self):
         for event in pygame.event.get():
@@ -112,6 +116,7 @@ class MapEditor:
         
         
         for sprite in self.game.bottom_sprites:
+            self.game.minimap_buffer.blit(sprite.image, sprite.rect)
             if self.screen.get_rect().colliderect(sprite.rect):
                 #   self.screen_buffer.blit(sprite.image, sprite.rect)
                 scaled_rect = sprite.rect.copy()
@@ -122,16 +127,19 @@ class MapEditor:
                 scaled_sprite = pygame.transform.scale_by(sprite.image, self.game.zoom_level)
                 self.screen.blit(scaled_sprite, scaled_rect)
 
-                if sprite == Dirt1 or Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
-                    mouse_pos = pygame.mouse.get_pos()
-                    hits = scaled_rect.collidepoint(mouse_pos)
-                    if hits:
-                       
-                        ActiveTile(self.game, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
+                if self.mode == 'digging':
+
+                    if sprite == Dirt1 or Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
+                        mouse_pos = pygame.mouse.get_pos()
+                        hits = scaled_rect.collidepoint(mouse_pos)
+                        if hits:
+                        
+                            ActiveTile(self.game, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
 
         for sprite in sorted(self.game.all_sprites, key= lambda sprite: sprite.rect.centery):
+            self.game.minimap_buffer.blit(sprite.image, sprite.rect)
             if self.screen.get_rect().colliderect(sprite.rect):
-                #   self.screen_buffer.blit(sprite.image, sprite.rect)
+                #   
                 scaled_rect = sprite.rect.copy()
                 scaled_rect.width = int(sprite.rect.width*self.game.zoom_level)
                 scaled_rect.height = int(sprite.rect.height*self.game.zoom_level)
@@ -140,14 +148,17 @@ class MapEditor:
                 scaled_sprite = pygame.transform.scale_by(sprite.image, self.game.zoom_level)
                 self.screen.blit(scaled_sprite, scaled_rect)
 
-                if sprite == Dirt1 or Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
-                    mouse_pos = pygame.mouse.get_pos()
-                    hits = scaled_rect.collidepoint(mouse_pos)
-                    if hits:
-                       
-                        ActiveTile(self.game, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
+                if self.mode == 'digging':
+
+                    if sprite == Dirt1 or Dirt2 or TrenchLeftRecess or TrenchRightRecess or TrenchLeftTaperTop or TrenchRightTaperBottom or TrenchLeftTaperBottom or TrenchRightTaperTop or TrenchWalls1:
+                        mouse_pos = pygame.mouse.get_pos()
+                        hits = scaled_rect.collidepoint(mouse_pos)
+                        if hits:
+                        
+                            ActiveTile(self.game, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
 
         for sprite in sorted(self.game.top_sprites, key= lambda sprite: sprite.rect.centery):
+            self.game.minimap_buffer.blit(sprite.image, sprite.rect)
             if self.screen.get_rect().colliderect(sprite.rect):
                 scaled_rect = sprite.rect.copy()
                 scaled_rect.width = int(sprite.rect.width*self.game.zoom_level)
@@ -156,8 +167,10 @@ class MapEditor:
                 scaled_rect.y = int(sprite.rect.y*self.game.zoom_level)
                 scaled_sprite = pygame.transform.scale_by(sprite.image, self.game.zoom_level)
                 self.screen.blit(scaled_sprite, scaled_rect)
+        
 
         self.map_ui.draw()
+        mouse_pos = pygame.mouse.get_pos()
 
         if self.game.unit_attack:
             self.screen.blit(self.game.mouse, (mouse_pos[0]-16, mouse_pos[1]-16))

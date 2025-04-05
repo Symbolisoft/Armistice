@@ -29,8 +29,10 @@ class Game:
         self.screen = pygame.display.set_mode((SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
         self.icon = pygame.image.load('img/ui_images/pointer_default.png')
         pygame.display.set_icon(self.icon)
-        self.screen_buffer = pygame.Surface((SCREEN_WIDTH-50, SCREEN_HEIGHT-80))
-        self.screen_buffer_rect = self.screen_buffer.get_rect(x=0, y=0)
+
+        self.minimap_buffer = pygame.Surface((4160, 1920))
+        
+        
         pygame.display.set_caption('Armistice')
 
         self.camera = Camera(self)
@@ -108,6 +110,7 @@ class Game:
         self.barbed_wire = []
         self.bottom_sprites = []
         self.top_sprites = []
+        self.edges = []
 
     def map_editor(self):
         
@@ -124,6 +127,7 @@ class Game:
         self.barbed_wire = pygame.sprite.LayeredUpdates()
         self.bottom_sprites = pygame.sprite.LayeredUpdates()
         self.top_sprites = pygame.sprite.LayeredUpdates()
+        self.edges = pygame.sprite.LayeredUpdates()
 
 
         self.digging_sounds = [
@@ -238,8 +242,9 @@ class Game:
         self.screen_buffer.fill(BLACK)
         
         for sprite in self.bottom_sprites:
+            self.minimap_buffer.blit(sprite.image, sprite.rect)
             if self.screen.get_rect().colliderect(sprite.rect):
-                #   self.screen_buffer.blit(sprite.image, sprite.rect)
+                
                 scaled_rect = sprite.rect.copy()
                 scaled_rect.width = int(sprite.rect.width*self.zoom_level)
                 scaled_rect.height = int(sprite.rect.height*self.zoom_level)
@@ -249,8 +254,9 @@ class Game:
                 self.screen.blit(scaled_sprite, scaled_rect)
 
         for sprite in sorted(self.all_sprites, key= lambda sprite: sprite.rect.centery):
+            self.minimap_buffer.blit(sprite.image, sprite.rect)
             if self.screen.get_rect().colliderect(sprite.rect):
-                #   self.screen_buffer.blit(sprite.image, sprite.rect)
+                
                 scaled_rect = sprite.rect.copy()
                 scaled_rect.width = int(sprite.rect.width*self.zoom_level)
                 scaled_rect.height = int(sprite.rect.height*self.zoom_level)
@@ -267,6 +273,7 @@ class Game:
                             ActiveTile(self, sprite.rect.x+sprite.x_dif, sprite.rect.y+sprite.y_dif)
 
         for sprite in sorted(self.top_sprites, key= lambda sprite: sprite.rect.centery):
+            self.minimap_buffer.blit(sprite.image, sprite.rect)
             if self.screen.get_rect().colliderect(sprite.rect):
                 scaled_rect = sprite.rect.copy()
                 scaled_rect.width = int(sprite.rect.width*self.zoom_level)

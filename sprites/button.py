@@ -41,4 +41,30 @@ class Button:
         return False
 
     
+class SpriteButton:
+    def __init__(self, game, x, y, image):
+                
+        self.game = game
+        self.x = x
+        self.y = y
+        self.width = 32
+        self.height = 32
+
+        
+
+        self.image = image
+        self.rect = self.image.get_rect(width=TILESIZE, height=TILESIZE)
+
+        self.rect.x = self.x
+        self.rect.y = self.y
+
+        self.highlight = 0
+
+    def is_pressed(self, pos, pressed):
+        if self.rect.collidepoint(pos):
+            if pressed[0]:
+                return True
+            return False
+        return False
+
         
