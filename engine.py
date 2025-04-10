@@ -111,6 +111,7 @@ class Game:
         self.bottom_sprites = []
         self.top_sprites = []
         self.edges = []
+        self.map_editor_build_sprite = []
 
     def map_editor(self):
         
@@ -128,6 +129,7 @@ class Game:
         self.bottom_sprites = pygame.sprite.LayeredUpdates()
         self.top_sprites = pygame.sprite.LayeredUpdates()
         self.edges = pygame.sprite.LayeredUpdates()
+        self.map_editor_build_sprite = pygame.sprite.LayeredUpdates()
 
 
         self.digging_sounds = [

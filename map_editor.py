@@ -42,10 +42,7 @@ class MapEditor:
             
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_b]:
-            self.game.digging = True
-        else:
-            self.game.digging = False
+        
 
         if keys[pygame.K_UP]:
             if self.game.zoom_level < 1.8:
@@ -92,6 +89,7 @@ class MapEditor:
         self.game.top_sprites.update()
         self.game.camera.update()
         self.map_ui.update()
+        self.game.map_editor_build_sprite.update()
 
 
         if self.game.zoom_level > 1.8:
@@ -105,8 +103,79 @@ class MapEditor:
         if self.game.camera_speed <= 4:
             self.game.camera_speed = 4
 
-        
-        self.game.mouse = self.game.default_mouse
+        if self.mode == 'None' or self.mode == 'digging':
+            self.game.mouse = self.game.default_mouse
+        elif self.mode == 'trench walls':
+            if self.map_ui.build_sprite == 1:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(0, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 2:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(32, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 3:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(64, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 4:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(96, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 5:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(128, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 6:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(160, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 7:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(192, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 8:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(224, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 9:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(256, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 10:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(288, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 11:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(320, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 12:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(352, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 13:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(384, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 14:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(416, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 15:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(448, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 16:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(480, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 17:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(512, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 18:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(544, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 19:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(576, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 25:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(0, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 26:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(32, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 27:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(64, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 28:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(96, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 29:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(128, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 30:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(160, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 31:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(192, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 32:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(224, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 33:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(256, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 34:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(288, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 35:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(320, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 36:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(352, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 37:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(384, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 38:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(416, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 39:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(448, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 40:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(480, 32, TILESIZE, TILESIZE), self.game.zoom_level)
 
         
         

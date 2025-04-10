@@ -53,6 +53,7 @@ class SpriteButton:
         
 
         self.image = image
+        self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect(width=TILESIZE, height=TILESIZE)
 
         self.rect.x = self.x

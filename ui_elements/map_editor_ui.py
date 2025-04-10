@@ -2,6 +2,7 @@ import pygame
 
 from configs.screen_config import *
 from sprites.button import *
+from sprites.map_editor_trench import *
 from ui_elements.minimap import *
 from map_editor_mode_switch import mode_switch
 
@@ -77,6 +78,9 @@ class MapUI:
         self.sp_button2_23 = SpriteButton(self.game, 900, 600, self.blank_32)
         self.sp_button2_24 = SpriteButton(self.game, 940, 600, self.blank_32)
 
+        self.build_sprite = 0
+        
+
     def events(self):
         mouse_pos = pygame.mouse.get_pos()
         mouse_pressed = pygame.mouse.get_pressed()
@@ -91,9 +95,258 @@ class MapUI:
         elif self.surface_button.is_pressed(mouse_pos, mouse_pressed):
             mode_switch(self.map_editor, 5)
         
+        if self.map_editor.mode == 'trench walls':
+            if self.sp_button_1.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 1
+            elif self.sp_button_2.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 2
+            elif self.sp_button_3.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 3
+            elif self.sp_button_4.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 4
+            elif self.sp_button_5.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 5
+            elif self.sp_button_6.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 6
+            elif self.sp_button_7.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 7
+            elif self.sp_button_8.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 8
+            elif self.sp_button_9.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 9
+            elif self.sp_button_10.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 10
+            elif self.sp_button_11.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 11
+            elif self.sp_button_12.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 12
+            elif self.sp_button_13.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 13
+            elif self.sp_button_14.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 14
+            elif self.sp_button_15.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 15
+            elif self.sp_button_16.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 16
+            elif self.sp_button_17.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 17
+            elif self.sp_button_18.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 18
+            elif self.sp_button_19.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 19
+            elif self.sp_button_21.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 21
+            elif self.sp_button_22.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 22
+            elif self.sp_button_23.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 23
+            elif self.sp_button_24.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 24
+
+            elif self.sp_button2_1.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 25
+            elif self.sp_button2_2.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 26
+            elif self.sp_button2_3.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 27
+            elif self.sp_button2_4.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 28
+            elif self.sp_button2_5.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 29
+            elif self.sp_button2_6.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 30
+            elif self.sp_button2_7.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 31
+            elif self.sp_button2_8.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 32
+            elif self.sp_button2_9.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 33
+            elif self.sp_button2_10.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 34
+            elif self.sp_button2_11.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 35
+            elif self.sp_button2_12.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 36
+            elif self.sp_button2_13.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 37
+            elif self.sp_button2_14.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 38
+            elif self.sp_button2_15.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 39
+            elif self.sp_button2_16.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 40
+            elif self.sp_button2_17.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 41
+            elif self.sp_button2_18.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 42
+            elif self.sp_button2_19.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 43
+            elif self.sp_button2_21.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 44
+            elif self.sp_button2_22.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 45
+            elif self.sp_button2_23.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 46
+            elif self.sp_button2_24.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 47
+
+        
 
     def update(self):
         self.minimap.update()
+
+        if self.map_editor.mode == 'trench walls':
+            self.sp_button_1 = SpriteButton(self.game, 20, 560, self.game.dirt_spritesheet.get_sprite(0, 0, TILESIZE, TILESIZE))
+            self.sp_button_2 = SpriteButton(self.game, 60, 560, self.game.dirt_spritesheet.get_sprite(32, 0, TILESIZE, TILESIZE))
+            self.sp_button_3 = SpriteButton(self.game, 100, 560, self.game.dirt_spritesheet.get_sprite(64, 0, TILESIZE, TILESIZE))
+            self.sp_button_4 = SpriteButton(self.game, 140, 560, self.game.dirt_spritesheet.get_sprite(96, 0, TILESIZE, TILESIZE))
+            self.sp_button_5 = SpriteButton(self.game, 180, 560, self.game.dirt_spritesheet.get_sprite(128, 0, TILESIZE, TILESIZE))
+            self.sp_button_6 = SpriteButton(self.game, 220, 560, self.game.dirt_spritesheet.get_sprite(160, 0, TILESIZE, TILESIZE))
+            self.sp_button_7 = SpriteButton(self.game, 260, 560, self.game.dirt_spritesheet.get_sprite(192, 0, TILESIZE, TILESIZE))
+            self.sp_button_8 = SpriteButton(self.game, 300, 560, self.game.dirt_spritesheet.get_sprite(224, 0, TILESIZE, TILESIZE))
+            self.sp_button_9 = SpriteButton(self.game, 340, 560, self.game.dirt_spritesheet.get_sprite(256, 0, TILESIZE, TILESIZE))
+            self.sp_button_10 = SpriteButton(self.game, 380, 560, self.game.dirt_spritesheet.get_sprite(288, 0, TILESIZE, TILESIZE))
+            self.sp_button_11 = SpriteButton(self.game, 420, 560, self.game.dirt_spritesheet.get_sprite(320, 0, TILESIZE, TILESIZE))
+            self.sp_button_12 = SpriteButton(self.game, 460, 560, self.game.dirt_spritesheet.get_sprite(352, 0, TILESIZE, TILESIZE))
+            self.sp_button_13 = SpriteButton(self.game, 500, 560, self.game.dirt_spritesheet.get_sprite(384, 0, TILESIZE, TILESIZE))
+            self.sp_button_14 = SpriteButton(self.game, 540, 560, self.game.dirt_spritesheet.get_sprite(416, 0, TILESIZE, TILESIZE))
+            self.sp_button_15 = SpriteButton(self.game, 580, 560, self.game.dirt_spritesheet.get_sprite(448, 0, TILESIZE, TILESIZE))
+            self.sp_button_16 = SpriteButton(self.game, 620, 560, self.game.dirt_spritesheet.get_sprite(480, 0, TILESIZE, TILESIZE))
+            self.sp_button_17 = SpriteButton(self.game, 660, 560, self.game.dirt_spritesheet.get_sprite(512, 0, TILESIZE, TILESIZE))
+            self.sp_button_18 = SpriteButton(self.game, 700, 560, self.game.dirt_spritesheet.get_sprite(544, 0, TILESIZE, TILESIZE))
+            self.sp_button_19 = SpriteButton(self.game, 740, 560, self.game.dirt_spritesheet.get_sprite(576, 0, TILESIZE, TILESIZE))
+            self.sp_button_20 = SpriteButton(self.game, 780, 560, self.blank_32)
+            self.sp_button_21 = SpriteButton(self.game, 820, 560, self.blank_32)
+            self.sp_button_22 = SpriteButton(self.game, 860, 560, self.blank_32)
+            self.sp_button_23 = SpriteButton(self.game, 900, 560, self.blank_32)
+            self.sp_button_24 = SpriteButton(self.game, 940, 560, self.blank_32)
+
+            self.sp_button2_1 = SpriteButton(self.game, 20, 600, self.game.dirt_spritesheet.get_sprite(0, 32, TILESIZE, TILESIZE))
+            self.sp_button2_2 = SpriteButton(self.game, 60, 600, self.game.dirt_spritesheet.get_sprite(32, 32, TILESIZE, TILESIZE))
+            self.sp_button2_3 = SpriteButton(self.game, 100, 600, self.game.dirt_spritesheet.get_sprite(64, 32, TILESIZE, TILESIZE))
+            self.sp_button2_4 = SpriteButton(self.game, 140, 600, self.game.dirt_spritesheet.get_sprite(96, 32, TILESIZE, TILESIZE))
+            self.sp_button2_5 = SpriteButton(self.game, 180, 600, self.game.dirt_spritesheet.get_sprite(128, 32, TILESIZE, TILESIZE))
+            self.sp_button2_6 = SpriteButton(self.game, 220, 600, self.game.dirt_spritesheet.get_sprite(160, 32, TILESIZE, TILESIZE))
+            self.sp_button2_7 = SpriteButton(self.game, 260, 600, self.game.dirt_spritesheet.get_sprite(192, 32, TILESIZE, TILESIZE))
+            self.sp_button2_8 = SpriteButton(self.game, 300, 600, self.game.dirt_spritesheet.get_sprite(224, 32, TILESIZE, TILESIZE))
+            self.sp_button2_9 = SpriteButton(self.game, 340, 600, self.game.dirt_spritesheet.get_sprite(256, 32, TILESIZE, TILESIZE))
+            self.sp_button2_10 = SpriteButton(self.game, 380, 600, self.game.dirt_spritesheet.get_sprite(288, 32, TILESIZE, TILESIZE))
+            self.sp_button2_11 = SpriteButton(self.game, 420, 600, self.game.dirt_spritesheet.get_sprite(320, 32, TILESIZE, TILESIZE))
+            self.sp_button2_12 = SpriteButton(self.game, 460, 600, self.game.dirt_spritesheet.get_sprite(352, 32, TILESIZE, TILESIZE))
+            self.sp_button2_13 = SpriteButton(self.game, 500, 600, self.game.dirt_spritesheet.get_sprite(384, 32, TILESIZE, TILESIZE))
+            self.sp_button2_14 = SpriteButton(self.game, 540, 600, self.game.dirt_spritesheet.get_sprite(416, 32, TILESIZE, TILESIZE))
+            self.sp_button2_15 = SpriteButton(self.game, 580, 600, self.game.dirt_spritesheet.get_sprite(448, 32, TILESIZE, TILESIZE))
+            self.sp_button2_16 = SpriteButton(self.game, 620, 600, self.game.dirt_spritesheet.get_sprite(480, 32, TILESIZE, TILESIZE))
+            self.sp_button2_17 = SpriteButton(self.game, 660, 600, self.blank_32)
+            self.sp_button2_18 = SpriteButton(self.game, 700, 600, self.blank_32)
+            self.sp_button2_19 = SpriteButton(self.game, 740, 600, self.blank_32)
+            self.sp_button2_20 = SpriteButton(self.game, 780, 600, self.blank_32)
+            self.sp_button2_21 = SpriteButton(self.game, 820, 600, self.blank_32)
+            self.sp_button2_22 = SpriteButton(self.game, 860, 600, self.blank_32)
+            self.sp_button2_23 = SpriteButton(self.game, 900, 600, self.blank_32)
+            self.sp_button2_24 = SpriteButton(self.game, 940, 600, self.blank_32)
+
+        elif self.map_editor.mode == 'furnishings':
+            self.sp_button_1 = SpriteButton(self.game, 20, 560, self.game.trench_furnishings_spritesheet.get_sprite(0, 0, TILESIZE, TILESIZE))
+            self.sp_button_2 = SpriteButton(self.game, 60, 560, self.game.trench_furnishings_spritesheet.get_sprite(32, 0, TILESIZE, TILESIZE))
+            self.sp_button_3 = SpriteButton(self.game, 100, 560, self.game.trench_furnishings_spritesheet.get_sprite(64, 0, TILESIZE, TILESIZE))
+            self.sp_button_4 = SpriteButton(self.game, 140, 560, self.game.trench_furnishings_spritesheet.get_sprite(96, 0, TILESIZE, TILESIZE))
+            self.sp_button_5 = SpriteButton(self.game, 180, 560, self.game.trench_furnishings_spritesheet.get_sprite(128, 0, TILESIZE, TILESIZE))
+            self.sp_button_6 = SpriteButton(self.game, 220, 560, self.game.trench_furnishings_spritesheet.get_sprite(160, 0, TILESIZE, TILESIZE))
+            self.sp_button_7 = SpriteButton(self.game, 260, 560, self.game.trench_furnishings_spritesheet.get_sprite(192, 0, TILESIZE, TILESIZE))
+            self.sp_button_8 = SpriteButton(self.game, 300, 560, self.game.trench_furnishings_spritesheet.get_sprite(224, 0, TILESIZE, TILESIZE))
+            self.sp_button_9 = SpriteButton(self.game, 340, 560, self.game.trench_furnishings_spritesheet.get_sprite(256, 0, TILESIZE, TILESIZE))
+            self.sp_button_10 = SpriteButton(self.game, 380, 560, self.game.trench_furnishings_spritesheet.get_sprite(288, 0, TILESIZE, TILESIZE))
+            self.sp_button_11 = SpriteButton(self.game, 420, 560, self.game.trench_furnishings_spritesheet.get_sprite(320, 0, TILESIZE, TILESIZE))
+            self.sp_button_12 = SpriteButton(self.game, 460, 560, self.blank_32)
+            self.sp_button_13 = SpriteButton(self.game, 500, 560, self.blank_32)
+            self.sp_button_14 = SpriteButton(self.game, 540, 560, self.blank_32)
+            self.sp_button_15 = SpriteButton(self.game, 580, 560, self.blank_32)
+            self.sp_button_16 = SpriteButton(self.game, 620, 560, self.blank_32)
+            self.sp_button_17 = SpriteButton(self.game, 660, 560, self.blank_32)
+            self.sp_button_18 = SpriteButton(self.game, 700, 560, self.blank_32)
+            self.sp_button_19 = SpriteButton(self.game, 740, 560, self.blank_32)
+            self.sp_button_20 = SpriteButton(self.game, 780, 560, self.blank_32)
+            self.sp_button_21 = SpriteButton(self.game, 820, 560, self.blank_32)
+            self.sp_button_22 = SpriteButton(self.game, 860, 560, self.blank_32)
+            self.sp_button_23 = SpriteButton(self.game, 900, 560, self.blank_32)
+            self.sp_button_24 = SpriteButton(self.game, 940, 560, self.blank_32)
+
+            self.sp_button2_1 = SpriteButton(self.game, 20, 600, self.game.trench_furnishings_spritesheet.get_sprite(64, 32, TILESIZE, TILESIZE))
+            self.sp_button2_2 = SpriteButton(self.game, 60, 600, self.game.trench_furnishings_spritesheet.get_sprite(32, 32, TILESIZE, TILESIZE))
+            self.sp_button2_3 = SpriteButton(self.game, 100, 600, self.game.trench_furnishings_spritesheet.get_sprite(0, 32, TILESIZE, TILESIZE))
+            self.sp_button2_4 = SpriteButton(self.game, 140, 600, self.game.trench_furnishings_spritesheet.get_sprite(96, 32, TILESIZE, TILESIZE))
+            self.sp_button2_5 = SpriteButton(self.game, 180, 600, self.game.trench_furnishings_spritesheet.get_sprite(128, 32, TILESIZE, TILESIZE))
+            self.sp_button2_6 = SpriteButton(self.game, 220, 600, self.game.trench_furnishings_spritesheet.get_sprite(160, 32, TILESIZE, TILESIZE))
+            self.sp_button2_7 = SpriteButton(self.game, 260, 600, self.game.trench_furnishings_spritesheet.get_sprite(192, 32, TILESIZE, TILESIZE))
+            self.sp_button2_8 = SpriteButton(self.game, 300, 600, self.game.trench_furnishings_spritesheet.get_sprite(224, 32, TILESIZE, TILESIZE))
+            self.sp_button2_9 = SpriteButton(self.game, 340, 600, self.game.trench_furnishings_spritesheet.get_sprite(256, 32, TILESIZE, TILESIZE))
+            self.sp_button2_10 = SpriteButton(self.game, 380, 600, self.game.trench_furnishings_spritesheet.get_sprite(288, 32, TILESIZE, TILESIZE))
+            self.sp_button2_11 = SpriteButton(self.game, 420, 600, self.game.trench_furnishings_spritesheet.get_sprite(320, 32, TILESIZE, TILESIZE))
+            self.sp_button2_12 = SpriteButton(self.game, 460, 600, self.blank_32)
+            self.sp_button2_13 = SpriteButton(self.game, 500, 600, self.blank_32)
+            self.sp_button2_14 = SpriteButton(self.game, 540, 600, self.blank_32)
+            self.sp_button2_15 = SpriteButton(self.game, 580, 600, self.blank_32)
+            self.sp_button2_16 = SpriteButton(self.game, 620, 600, self.blank_32)
+            self.sp_button2_17 = SpriteButton(self.game, 660, 600, self.blank_32)
+            self.sp_button2_18 = SpriteButton(self.game, 700, 600, self.blank_32)
+            self.sp_button2_19 = SpriteButton(self.game, 740, 600, self.blank_32)
+            self.sp_button2_20 = SpriteButton(self.game, 780, 600, self.blank_32)
+            self.sp_button2_21 = SpriteButton(self.game, 820, 600, self.blank_32)
+            self.sp_button2_22 = SpriteButton(self.game, 860, 600, self.blank_32)
+            self.sp_button2_23 = SpriteButton(self.game, 900, 600, self.blank_32)
+            self.sp_button2_24 = SpriteButton(self.game, 940, 600, self.blank_32)
+
+        elif self.map_editor.mode == 'digging':
+            self.sp_button_1 = SpriteButton(self.game, 20, 560, self.blank_32)
+            self.sp_button_2 = SpriteButton(self.game, 60, 560, self.blank_32)
+            self.sp_button_3 = SpriteButton(self.game, 100, 560, self.blank_32)
+            self.sp_button_4 = SpriteButton(self.game, 140, 560, self.blank_32)
+            self.sp_button_5 = SpriteButton(self.game, 180, 560, self.blank_32)
+            self.sp_button_6 = SpriteButton(self.game, 220, 560, self.blank_32)
+            self.sp_button_7 = SpriteButton(self.game, 260, 560, self.blank_32)
+            self.sp_button_8 = SpriteButton(self.game, 300, 560, self.blank_32)
+            self.sp_button_9 = SpriteButton(self.game, 340, 560, self.blank_32)
+            self.sp_button_10 = SpriteButton(self.game, 380, 560, self.blank_32)
+            self.sp_button_11 = SpriteButton(self.game, 420, 560, self.blank_32)
+            self.sp_button_12 = SpriteButton(self.game, 460, 560, self.blank_32)
+            self.sp_button_13 = SpriteButton(self.game, 500, 560, self.blank_32)
+            self.sp_button_14 = SpriteButton(self.game, 540, 560, self.blank_32)
+            self.sp_button_15 = SpriteButton(self.game, 580, 560, self.blank_32)
+            self.sp_button_16 = SpriteButton(self.game, 620, 560, self.blank_32)
+            self.sp_button_17 = SpriteButton(self.game, 660, 560, self.blank_32)
+            self.sp_button_18 = SpriteButton(self.game, 700, 560, self.blank_32)
+            self.sp_button_19 = SpriteButton(self.game, 740, 560, self.blank_32)
+            self.sp_button_20 = SpriteButton(self.game, 780, 560, self.blank_32)
+            self.sp_button_21 = SpriteButton(self.game, 820, 560, self.blank_32)
+            self.sp_button_22 = SpriteButton(self.game, 860, 560, self.blank_32)
+            self.sp_button_23 = SpriteButton(self.game, 900, 560, self.blank_32)
+            self.sp_button_24 = SpriteButton(self.game, 940, 560, self.blank_32)
+
+            self.sp_button2_1 = SpriteButton(self.game, 20, 600, self.blank_32)
+            self.sp_button2_2 = SpriteButton(self.game, 60, 600, self.blank_32)
+            self.sp_button2_3 = SpriteButton(self.game, 100, 600, self.blank_32)
+            self.sp_button2_4 = SpriteButton(self.game, 140, 600, self.blank_32)
+            self.sp_button2_5 = SpriteButton(self.game, 180, 600, self.blank_32)
+            self.sp_button2_6 = SpriteButton(self.game, 220, 600, self.blank_32)
+            self.sp_button2_7 = SpriteButton(self.game, 260, 600, self.blank_32)
+            self.sp_button2_8 = SpriteButton(self.game, 300, 600, self.blank_32)
+            self.sp_button2_9 = SpriteButton(self.game, 340, 600, self.blank_32)
+            self.sp_button2_10 = SpriteButton(self.game, 380, 600, self.blank_32)
+            self.sp_button2_11 = SpriteButton(self.game, 420, 600, self.blank_32)
+            self.sp_button2_12 = SpriteButton(self.game, 460, 600, self.blank_32)
+            self.sp_button2_13 = SpriteButton(self.game, 500, 600, self.blank_32)
+            self.sp_button2_14 = SpriteButton(self.game, 540, 600, self.blank_32)
+            self.sp_button2_15 = SpriteButton(self.game, 580, 600, self.blank_32)
+            self.sp_button2_16 = SpriteButton(self.game, 620, 600, self.blank_32)
+            self.sp_button2_17 = SpriteButton(self.game, 660, 600, self.blank_32)
+            self.sp_button2_18 = SpriteButton(self.game, 700, 600, self.blank_32)
+            self.sp_button2_19 = SpriteButton(self.game, 740, 600, self.blank_32)
+            self.sp_button2_20 = SpriteButton(self.game, 780, 600, self.blank_32)
+            self.sp_button2_21 = SpriteButton(self.game, 820, 600, self.blank_32)
+            self.sp_button2_22 = SpriteButton(self.game, 860, 600, self.blank_32)
+            self.sp_button2_23 = SpriteButton(self.game, 900, 600, self.blank_32)
+            self.sp_button2_24 = SpriteButton(self.game, 940, 600, self.blank_32)
 
     def draw(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -115,51 +368,185 @@ class MapUI:
             pass
         try:
             self.screen.blit(self.sp_button_3.image, self.sp_button_3.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_4.image, self.sp_button_4.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_5.image, self.sp_button_5.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_6.image, self.sp_button_6.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_7.image, self.sp_button_7.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_8.image, self.sp_button_8.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_9.image, self.sp_button_9.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_10.image, self.sp_button_10.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_11.image, self.sp_button_11.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_12.image, self.sp_button_12.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_13.image, self.sp_button_13.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_14.image, self.sp_button_14.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_15.image, self.sp_button_15.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_16.image, self.sp_button_16.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_17.image, self.sp_button_17.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_18.image, self.sp_button_18.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_19.image, self.sp_button_19.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_20.image, self.sp_button_20.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_21.image, self.sp_button_21.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_22.image, self.sp_button_22.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_23.image, self.sp_button_23.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button_24.image, self.sp_button_24.rect)
-
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_1.image, self.sp_button2_1.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_2.image, self.sp_button2_2.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_3.image, self.sp_button2_3.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_4.image, self.sp_button2_4.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_5.image, self.sp_button2_5.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_6.image, self.sp_button2_6.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_7.image, self.sp_button2_7.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_8.image, self.sp_button2_8.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_9.image, self.sp_button2_9.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_10.image, self.sp_button2_10.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_11.image, self.sp_button2_11.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_12.image, self.sp_button2_12.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_13.image, self.sp_button2_13.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_14.image, self.sp_button2_14.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_15.image, self.sp_button2_15.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_16.image, self.sp_button2_16.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_17.image, self.sp_button2_17.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_18.image, self.sp_button2_18.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_19.image, self.sp_button2_19.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_20.image, self.sp_button2_20.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_21.image, self.sp_button2_21.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_22.image, self.sp_button2_22.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_23.image, self.sp_button2_23.rect)
+        except:
+            pass
+        try:
             self.screen.blit(self.sp_button2_24.image, self.sp_button2_24.rect)
         except:
             pass

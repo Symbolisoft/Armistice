@@ -87,6 +87,7 @@ class MainMenu:
                 self.button_timer = now
 
     def update(self):
+        self.game.mouse = self.game.default_mouse
 
         self.faction_label = self.game.font.render(f'Selected Faction:  {self.game.faction}', True, (200, 200, 200))
         
