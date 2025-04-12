@@ -136,6 +136,8 @@ class MapUI:
                 self.build_sprite = 19
             elif self.sp_button_21.is_pressed(mouse_pos, mouse_pressed):
                 self.build_sprite = 21
+            elif self.sp_button_20.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 20
             elif self.sp_button_22.is_pressed(mouse_pos, mouse_pressed):
                 self.build_sprite = 22
             elif self.sp_button_23.is_pressed(mouse_pos, mouse_pressed):
@@ -189,6 +191,102 @@ class MapUI:
                 self.build_sprite = 46
             elif self.sp_button2_24.is_pressed(mouse_pos, mouse_pressed):
                 self.build_sprite = 47
+        elif self.map_editor.mode == 'furnishings':
+            if self.sp_button_1.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 41
+            elif self.sp_button_2.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 42
+            elif self.sp_button_3.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 43
+            elif self.sp_button_4.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 44
+            elif self.sp_button_5.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 45
+            elif self.sp_button_6.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 46
+            elif self.sp_button_7.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 47
+            elif self.sp_button_8.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 48
+            elif self.sp_button_9.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 49
+            elif self.sp_button_10.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 50
+            elif self.sp_button_11.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 51
+            elif self.sp_button_12.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 52
+            elif self.sp_button_13.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 53
+            elif self.sp_button_14.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 54
+            elif self.sp_button_15.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 55
+            elif self.sp_button_16.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 56
+            elif self.sp_button_17.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 57
+            elif self.sp_button_18.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 58
+            elif self.sp_button_19.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 59
+            elif self.sp_button_20.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 60
+            elif self.sp_button_21.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 61
+            elif self.sp_button_22.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 62
+            elif self.sp_button_23.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 63
+            elif self.sp_button_24.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 64
+
+            elif self.sp_button2_1.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 65
+            elif self.sp_button2_2.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 66
+            elif self.sp_button2_3.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 67
+            elif self.sp_button2_4.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 68
+            elif self.sp_button2_5.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 69
+            elif self.sp_button2_6.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 70
+            elif self.sp_button2_7.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 71
+            elif self.sp_button2_8.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 72
+            elif self.sp_button2_9.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 73
+            elif self.sp_button2_10.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 74
+            elif self.sp_button2_11.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 75
+            elif self.sp_button2_12.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 76
+            elif self.sp_button2_13.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 77
+            elif self.sp_button2_14.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 78
+            elif self.sp_button2_15.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 79
+            elif self.sp_button2_16.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 80
+            elif self.sp_button2_17.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 81
+            elif self.sp_button2_18.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 82
+            elif self.sp_button2_19.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 83
+            elif self.sp_button2_21.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 84
+            elif self.sp_button2_22.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 85
+            elif self.sp_button2_23.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 86
+            elif self.sp_button2_24.is_pressed(mouse_pos, mouse_pressed):
+                self.build_sprite = 87
 
         
 
