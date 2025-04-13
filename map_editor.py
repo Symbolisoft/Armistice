@@ -4,6 +4,7 @@ from ui_elements.map_editor_ui import *
 from map_translator import *
 from sprites.dirt import *
 from sprites.map_editor_trench import *
+from sprites.map_editor_furniture import *
 
 class MapEditor:
     def __init__(self, game):
@@ -176,6 +177,78 @@ class MapEditor:
                     MapEdTrench40(self.game, mouse_pos[0], mouse_pos[1])
                     self.map_ui.build_sprite = 0
 
+            if self.mode == 'furnishings':
+                self.game.zoom_level = 1
+                if self.map_ui.build_sprite == 0:
+                    pass
+                elif self.map_ui.build_sprite == 41:
+                    MapEdBunkRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 42:
+                    MapEdSandBagsSmallRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 43:
+                    MapEdSandBagsLargeRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 44:
+                    MapEdCabinetRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 45:
+                    MapEdGunRackRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 46:
+                    MapEdGreenCratesRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 47:
+                    MapEdArtyShellsRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 48:
+                    MapEdFiringStepRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 49:
+                    MapEdBarbedWireRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 50:
+                    MapEdLadderRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 51:
+                    MapEdBarrelsRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+
+                elif self.map_ui.build_sprite == 65:
+                    MapEdBunkLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 66:
+                    MapEdSandBagsSmallLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 67:
+                    MapEdSandBagsLargeLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 68:
+                    MapEdCabinetLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 69:
+                    MapEdGunRackLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 70:
+                    MapEdGreenCratesLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 71:
+                    MapEdArtyShellsLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 72:
+                    MapEdFiringStepLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 73:
+                    MapEdBarbedWireLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 74:
+                    MapEdLadderLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 75:
+                    MapEdBarrelsLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+
         if mouse_pressed[2]:
             sprites = []
             for sprite in self.game.dirt_group:
@@ -292,6 +365,8 @@ class MapEditor:
             else:
                 self.game.mouse = self.game.default_mouse
         elif self.mode == 'furnishings':
+            if self.map_ui.build_sprite == 0:
+                self.game.mouse = self.game.default_mouse
             if self.map_ui.build_sprite == 41:
                 self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(0, 0, TILESIZE, TILESIZE), self.game.zoom_level)
             elif self.map_ui.build_sprite == 42:
