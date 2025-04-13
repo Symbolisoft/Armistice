@@ -214,6 +214,22 @@ class MapEditor:
                 elif self.map_ui.build_sprite == 51:
                     MapEdBarrelsRight(self.game, mouse_pos[0], mouse_pos[1])
                     self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 52:
+                    MapEdMediCratesRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 53:
+                    MapEdTableWHelmetRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 54:
+                    MapEdWoodenChairRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 55:
+                    MapEdTableSquareRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 56:
+                    MapEdTableLongRight(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+
 
                 elif self.map_ui.build_sprite == 65:
                     MapEdBunkLeft(self.game, mouse_pos[0], mouse_pos[1])
@@ -248,9 +264,26 @@ class MapEditor:
                 elif self.map_ui.build_sprite == 75:
                     MapEdBarrelsLeft(self.game, mouse_pos[0], mouse_pos[1])
                     self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 76:
+                    MapEdMediCratesLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 77:
+                    MapEdTableWHelmetLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 78:
+                    MapEdWoodenChairLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 79:
+                    MapEdTableSquareLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 80:
+                    MapEdTableLongLeft(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
 
         if mouse_pressed[2]:
             sprites = []
+            if self.mode == 'trench walls' or self.mode == 'furnishings':
+                self.map_ui.build_sprite = 0
             for sprite in self.game.dirt_group:
                 for tile in self.game.active_tile_group:
                     self.game.digging_sounds[random.randint(0, 2)].play(0)
@@ -391,6 +424,14 @@ class MapEditor:
                 self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(320, 0, TILESIZE, TILESIZE), self.game.zoom_level)
             elif self.map_ui.build_sprite == 52:
                 self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(352, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 53:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(384, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 54:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(416, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 55:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(448, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 56:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(480, 0, TILESIZE, TILESIZE), self.game.zoom_level)
 
             elif self.map_ui.build_sprite == 65:
                 self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(64, 32, TILESIZE, TILESIZE), self.game.zoom_level)
@@ -416,6 +457,14 @@ class MapEditor:
                 self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(320, 32, TILESIZE, TILESIZE), self.game.zoom_level)
             elif self.map_ui.build_sprite == 76:
                 self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(352, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 77:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(384, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 78:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(416, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 79:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(448, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 80:
+                self.game.mouse = pygame.transform.scale_by(self.game.trench_furnishings_spritesheet.get_sprite(480, 32, TILESIZE, TILESIZE), self.game.zoom_level)
 
         
 
