@@ -53,6 +53,7 @@ class Game:
         self.trench_furnishings_spritesheet = SpriteSheet('img/object_spritesheets/trench_furnishings_spritesheet.png')
         self.attack_pointer_spritesheet = SpriteSheet('img/ui_images/attack_pointer_spritesheet.png')
         self.move_pointer_spritesheet = SpriteSheet('img/ui_images/move_pointer_spritesheet.png')
+        self.water_spritesheet = AlphaSpriteSheet('img/terrain_spritesheets/water_spritesheet.png')
 
 
         self.default_mouse = pygame.image.load('img/ui_images/pointer_default.png')

@@ -127,6 +127,9 @@ class MapEditor:
                 elif self.map_ui.build_sprite == 19:
                     MapEdTrench19(self.game, mouse_pos[0], mouse_pos[1])
                     self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 20:
+                    MapEdTrench20(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
 
                 elif self.map_ui.build_sprite == 25:
                     MapEdTrench25(self.game, mouse_pos[0], mouse_pos[1])
@@ -175,6 +178,18 @@ class MapEditor:
                     self.map_ui.build_sprite = 0
                 elif self.map_ui.build_sprite == 40:
                     MapEdTrench40(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 41:
+                    MapEdTrench41(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 42:
+                    MapEdTrench42(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 43:
+                    MapEdTrench43(self.game, mouse_pos[0], mouse_pos[1])
+                    self.map_ui.build_sprite = 0
+                elif self.map_ui.build_sprite == 44:
+                    MapEdTrench44(self.game, mouse_pos[0], mouse_pos[1])
                     self.map_ui.build_sprite = 0
 
             if self.mode == 'furnishings':
@@ -363,6 +378,9 @@ class MapEditor:
                 self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(544, 0, TILESIZE, TILESIZE), self.game.zoom_level)
             elif self.map_ui.build_sprite == 19:
                 self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(576, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 20:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(608, 0, TILESIZE, TILESIZE), self.game.zoom_level)
+
             elif self.map_ui.build_sprite == 25:
                 self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(0, 32, TILESIZE, TILESIZE), self.game.zoom_level)
             elif self.map_ui.build_sprite == 26:
@@ -395,6 +413,15 @@ class MapEditor:
                 self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(448, 32, TILESIZE, TILESIZE), self.game.zoom_level)
             elif self.map_ui.build_sprite == 40:
                 self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(480, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 41:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(512, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 42:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(544, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 43:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(576, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+            elif self.map_ui.build_sprite == 44:
+                self.game.mouse = pygame.transform.scale_by(self.game.dirt_spritesheet.get_sprite(608, 32, TILESIZE, TILESIZE), self.game.zoom_level)
+
             else:
                 self.game.mouse = self.game.default_mouse
         elif self.mode == 'furnishings':
