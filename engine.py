@@ -54,6 +54,8 @@ class Game:
         self.attack_pointer_spritesheet = SpriteSheet('img/ui_images/attack_pointer_spritesheet.png')
         self.move_pointer_spritesheet = SpriteSheet('img/ui_images/move_pointer_spritesheet.png')
         self.water_spritesheet = AlphaSpriteSheet('img/terrain_spritesheets/water_spritesheet.png')
+        self.trench_bunker_spritesheet = SpriteSheet('img/terrain_spritesheets/bunker_building_spritesheet.png')
+        self.houses_spritesheet = SpriteSheet('img/terrain_spritesheets/town_buildings_spritesheet.png')
 
 
         self.default_mouse = pygame.image.load('img/ui_images/pointer_default.png')
@@ -113,6 +115,9 @@ class Game:
         self.top_sprites = []
         self.edges = []
         self.map_editor_build_sprite = []
+        self.bunker_doors = []
+        self.hq_doors = []
+        self.buildings = []
 
     def map_editor(self):
         
@@ -131,6 +136,9 @@ class Game:
         self.top_sprites = pygame.sprite.LayeredUpdates()
         self.edges = pygame.sprite.LayeredUpdates()
         self.map_editor_build_sprite = pygame.sprite.LayeredUpdates()
+        self.bunker_doors = pygame.sprite.LayeredUpdates()
+        self.hq_doors = pygame.sprite.LayeredUpdates()
+        self.buildings = pygame.sprite.LayeredUpdates()
 
 
         self.digging_sounds = [
